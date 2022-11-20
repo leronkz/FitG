@@ -115,11 +115,25 @@ input{
         width: 100%;
     }
     form{
+        
         margin: auto;
     }
     img{
         margin-left: 4.5em;
         margin-right: 4.5em;
         margin-bottom: 0;
+    }
+    .logo2{
+        position: relative;
+        bottom: 100px;
+    }
+    .register-button{
+        height: 50px;
+    }
+    .login-button{
+        height: 100px;
+    }
+    input{
+        padding: 25px;
     }
 }
