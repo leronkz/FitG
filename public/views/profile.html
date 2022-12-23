@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+
+<head>
+    <link rel="stylesheet" type="text/css" href="../css/profile_style.css">
+    <script src="https://kit.fontawesome.com/7fd64f3cef.js" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500&display=swap" rel="stylesheet">
+    <title>PROFILE PAGE</title>
+</head>
+
+<body>
+    <div class="container">
+        <nav>
+            <img src="../img/lista_rozwijana.svg">
+        </nav>
+        <div class="profile-picture">
+            <img src="../img/profile_picture.svg">
+            <button class="change-image">Zmień zdjęcie profilowe</button>
+        </div>
+        <div class="form">
+            <b class="main-text">Twoje konto</b>
+            <label for="imie">
+                <b class="text">Imię: </b>
+                <input name="im" type="text" placeholder="Imię">
+            </label>
+            <label for="nazwisko">
+                <b class="text">Nazwisko: </b>
+                <input name="nazw" type="text" placeholder="Nazwisko">
+            </label>
+            <label for="e-mail">
+                <b class="text">E-mail: </b>
+                <input name="mail" type="text" placeholder="E-mail">
+            </label>
+            <label for="plec">
+                <b class="text">Płeć: </b>
+                <div class="man-radio-inline">
+                    <input type="radio" id="sex_MALE" name="sex" value="MALE">
+                    <b class="text">Mężczyzna</b>
+                    <input type="radio" id="sex_FEMALE" name="sex" value="FEMALE">
+                    <b class="text">Kobieta</b>
+                </div>
+            </label>
+                
+                <label for="birthday"><b class="text">Data urodzenia:</b>
+                <input type="date" id="birthday" name="birthday">
+                </label>
+            
+            <label for="wzrost">
+                <b class="text">Wzrost [cm]: </b>
+                <input name="wzro" type="number" placeholder="wzrost">
+                <!-- <b class="text">cm</b> -->
+            </label>
+            <label for="masa">
+                <b class="text">Masa ciała [kg]: </b>
+                <input name="mas" type="number" placeholder="waga">
+                <!-- <b class="text">kg</b> -->
+            </label>   
+            <label for="zatwierdz-zmiany">
+                <button class ="save-button">Zapisz zmiany</button>
+            </label>
+        </div> 
+    </div>
+
+</body>

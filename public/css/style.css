@@ -1,11 +1,18 @@
-body{
-
-    margin: 0;
-
-}
+html {
+    margin: 0px;
+    height: 100%;
+    width: 100%;
+    padding:0px;
+ }
+ 
+ body {
+    margin: 0px;
+    padding:0px;
+    min-height: 100%;
+    width: 100%;
+ }
 
 .container{
-
     width: 100vw;
     height: 100vh;
     background: linear-gradient(242.92deg, rgba(188, 205, 219, 0.89) 0.71%, rgba(166, 174, 196, 0.89) 100%);
@@ -14,7 +21,6 @@ body{
     flex-direction: row;
     justify-content: center;
     align-items: center;
-
 }
 
 .login-container{
@@ -59,8 +65,8 @@ form{
 
     line-height: 24px;
     font-size: 20px;
+    font-family: 'Inter';
     font-style: normal;
-    font-family: sans-serif;
     font-weight: 700;
     cursor:pointer;
 }
@@ -86,8 +92,8 @@ form{
 
     line-height: 24px;
     font-size: 20px;
+    font-family: 'Inter';
     font-style: normal;
-    font-family: sans-serif;
     font-weight: 700;
     cursor:pointer;
 }
@@ -111,18 +117,18 @@ input{
     height: 2vh;
     width: 60%;
     text-align: center;
-
     border: 3px solid black;
+
+    font-family: 'Inter';
+    font-style: normal;
 }
 
 .text{
-
     line-height: 24px;
     font-size: 20px;
-    font-style: normal;
-    font-family: sans-serif;
     font-weight: 700;
-
+    font-family: 'Inter';
+    font-style: normal;
 }
 @media only screen and (max-device-width: 420px){
     .container{
