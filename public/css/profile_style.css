@@ -3,7 +3,7 @@ body{
 }
 
 .container{
-     width: 100vw;
+    width: 100vw;
     height: 100vh;
     background: linear-gradient(242.92deg, rgba(188, 205, 219, 0.89) 0.71%, rgba(166, 174, 196, 0.89) 100%);
     display:flex;
@@ -44,7 +44,7 @@ input{
 .form{
     display:flex;
     flex-direction: column;
-    margin-top:4%;
+    /* margin-top:4%; */
     margin-right:4%;
     height: 90%;
     width: 60%;

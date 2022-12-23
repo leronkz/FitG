@@ -1,0 +1,137 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@500&display=swap');
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+body{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background: linear-gradient(242.92deg, rgba(188, 205, 219, 0.89) 0.71%, rgba(166, 174, 196, 0.89) 100%);;
+}
+.container{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+.main-text{
+    align-self: center;
+    font-family:'Inter';
+    font-style:normal;
+    font-weight: 700;
+    font-size:48px;
+    line-height: 48px;
+}
+.container nav{
+    align-self: flex-start;
+}
+.container>header{
+    position:fixed;
+} 
+.wrapper{
+    width:450px;
+    background:#DBEBF0;
+    border-radius: 10px;
+    border: 5px solid #000000;
+    margin-top:5%;
+}
+.wrapper header{
+    display:flex;
+    align-items: center;
+    padding:25px 30px 10px;
+    justify-content:space-between;
+}
+header .current-date{
+    font-size:1.45rem;
+    font-weight: 500;
+}
+header .icons span{
+    height: 38px;
+    width: 38px;
+    margin:0 1px;
+    text-align: center;
+    line-height: 38px;
+    border-radius: 50%;
+    cursor:pointer;
+    font-size:1.9rem;
+    color:#878787;
+}
+header .icons span:hover{
+    background: #f2f2f2;
+}
+header .icons span:last-child{
+    margin-right: -10px;
+}
+.calendar{
+    padding:20px;
+}
+.calendar ul{
+    display: flex;
+    list-style:none;
+    flex-wrap:wrap;
+    text-align:center;
+}
+.calendar .days{
+    margin-bottom:20px;
+}
+.calendar .weeks li{
+    font-weight: 500;
+}
+.calendar .days li{
+    z-index: 1;
+    cursor:pointer;
+    margin-top:30px;
+}
+.calendar ul li{
+    position:relative;
+    width: calc(100%/7);
+}
+.days li.inactive{
+    color:#aaa;
+}
+
+.calendar .days li::before{
+    position:absolute;
+    content:"";
+    height: 40px;
+    width: 40px;
+    top:50%;
+    left: 50%;
+    z-index: -1;
+    border-radius:50%;
+    transform: translate(-50%,-50%);
+    
+}
+.days li:hover::before{
+    background: #f2f2f2;
+}
+
+.days li.active::before{
+    border: 5px solid #ff0000;
+}
+
+.add-activity{
+    box-sizing: border-box;
+    background: #7BB4C4;
+    border: 2px solid #000000;
+    border-radius: 30px;
+    cursor:pointer;
+    height:4em;
+    font-family: 'Inter';
+    font-style: normal;
+    line-height: 24px;
+    font-size:16px;
+    font-weight: 700;
+    margin-top:3%;
+    width:50%;
+}
+
+.main-panel{
+    display:flex;
+    flex-direction:column;
+    align-items: center;
+}
