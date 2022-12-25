@@ -1,0 +1,71 @@
+.container nav{
+    width:350px;
+    height: 100%;
+    position: fixed;
+    top:0;
+    left:0;
+    background: #DBEBF0;
+    transform:translateX(-350px);
+    transition: transform 0.2s;
+    overflow: hidden;
+    /* align-self: flex-start; */
+}
+.nav-close{
+    background:none;
+    border:none;
+    display:flex;
+    align-items: center;
+    margin-left:auto;
+    padding:15px 25px;
+    cursor: pointer;
+}
+
+.nav-open .nav{
+    transform:translateX(0);    
+}
+
+.nav-open .main-panel{
+    transform: translateX(350px);
+    transition: transform 0.2s;
+}
+
+.open-nav{
+    align-self: flex-start;
+    background: transparent;
+    border:0;
+}
+.open-nav:hover{
+    cursor:pointer;
+    background: rgba(41, 110, 180, 0.367);
+}
+
+.nav .links-container{
+    box-shadow:0 -10px 10px rgba(0,0,0,0.15);
+}
+.nav-link{
+    display:flex;
+    align-items: center;
+    justify-content: space-between;
+    padding:15px 25px;
+    text-decoration: none;
+    color:#000000;
+}
+.nav-text{
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-size:22px;
+    line-height: 27px;
+}
+
+.nav-link:hover, .nav-close:hover{
+    background: rgba(41, 110, 180, 0.367);
+}
+label[for="profile-picture"]{
+    display: flex;
+    flex-direction: column;
+    align-items:center;
+}
+label[for="profile-picture"]>img{
+    width:70%;
+}

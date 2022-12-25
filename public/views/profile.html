@@ -6,17 +6,58 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500&display=swap" rel="stylesheet">
+    <script src="../js/nav-script.js" defer></script>
     <title>PROFILE PAGE</title>
 </head>
-
+<!-- TODO:
+MAKE RESPONSIVE -->
 <body>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
     <div class="container">
-        <nav>
-            <img src="../img/lista_rozwijana.svg">
+        <nav class="nav">
+            <button type="button" class="nav-close">
+                <ion-icon name="close-outline" size="large"></ion-icon>
+            </button>
+            <label for="profile-picture">
+                <img src="../img/profile_picture.svg">
+                <b class="text">Cześć Mateusz</b>
+            </label>
+            <div class="nav-links-container">
+                <a href="#" class="nav-link">
+                    <span class="nav-text">Profil</span>
+                    <ion-icon name="person-outline" size="large"></ion-icon>
+                </a>
+                <a href="#" class="nav-link">
+                    <span class="nav-text">Dziennik aktywności</span>
+                    <ion-icon name="reader-outline" size="large"></ion-icon>
+                </a>
+                <a href="#" class="nav-link">
+                    <span class="nav-text">Kalendarz aktywności</span>
+                    <ion-icon name="calendar-outline" size="large"></ion-icon>
+                </a>
+                <a href="#" class="nav-link">
+                    <span class="nav-text">Ustawienia</span>
+                    <ion-icon name="settings-outline" size="large"></ion-icon>
+                </a>
+                <a href="#" class="nav-link">
+                    <span class="nav-text">Informacje</span>
+                    <ion-icon name="information-circle-outline" size="large"></ion-icon>
+                </a>
+                <a href="#" class="nav-link">
+                    <span class="nav-text">Wyloguj się</span>
+                    <ion-icon name="log-out-outline" size="large"></ion-icon>
+                </a>
+            </div>
         </nav>
+        <button type="button" class="open-nav">
+            <img src="../img/lista_rozwijana.svg">
+        </button>
+        <div class="main-panel">
         <div class="profile-picture">
             <img src="../img/profile_picture.svg">
-            <button class="change-image">Zmień zdjęcie profilowe</button>
+            <button class="main-button">Zmień zdjęcie profilowe</button>
         </div>
         <div class="form">
             <header>
@@ -55,9 +96,10 @@
                 <input name="mas" type="number" placeholder="waga">
             </label>   
             <label for="zatwierdz-zmiany">
-                <button class ="save-button">Zapisz zmiany</button>
+                <button class="main-button">Zapisz zmiany</button>
             </label>
         </div> 
+        </div>
     </div>
 
 </body>

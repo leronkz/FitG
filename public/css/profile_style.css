@@ -1,5 +1,6 @@
 body{
     margin:0;
+    overflow-x: hidden;
 }
 
 .container{
@@ -11,8 +12,7 @@ body{
     justify-content: space-between;
 }
 
-button{
-
+ .main-button{
     box-sizing: border-box;
     background: #7BB4C4;
     border: 2px solid #000000;
@@ -24,14 +24,14 @@ button{
     line-height: 24px;
     font-size:16px;
     font-weight: 700;
-}
+} 
 
 input{
     box-sizing:border-box;
     background: #DBEBF0;
     border: 1px solid #000000;
     border-radius: 30px;
-    margin:8px;
+    margin:1%;
     width:80%;
     height: 100%;
     padding-left: 4%;
@@ -60,18 +60,15 @@ input{
     font-family: 'Inter';
     font-style: normal;
     line-height: 24px;
-    font-size:18px;
+    font-size:17px;
 }
-label{
+ label{
     display: flex;
     flex-direction:row;
     align-items: center;
     justify-content: flex-end;
-    margin-bottom:2em;
-    margin-top:1%;
-    width: 100%;
-    height: 6%;
-
+    margin-bottom: 2%;
+    margin-top:3%;
 }
 label[for="zatwierdz-zmiany"]{
     align-self: center;
@@ -82,13 +79,14 @@ label[for="zatwierdz-zmiany"]{
 }
 label[for="plec"]{
     justify-content: flex-start;
-    align-items: center;
+    align-items: unset;
     width: 50%;
     padding-left: 13%;
 }
 .man-radio-inline{
     display:flex;
     flex-direction:row;
+    align-items: center;
 }
 .main-text{
     align-self: center;
@@ -97,6 +95,85 @@ label[for="plec"]{
     font-weight: 700;
     font-size:48px;
     line-height: 48px;
+}
+.main-panel{
+    display:flex;
+    flex-direction:row;
+    width:100%;
+    height: 80%;
+    justify-content:space-around;
+}
+
+nav{
+    width:350px;
+    height: 100%;
+    position: fixed;
+    top:0;
+    left:0;
+    background: #DBEBF0;
+    transform:translateX(-350px);
+    transition: transform 0.2s;
+    overflow: hidden;
+    /* align-self: flex-start; */
+}
+.nav-close{
+    background:none;
+    border:none;
+    display:flex;
+    align-items: center;
+    margin-left:auto;
+    padding:15px 25px;
+    cursor: pointer;
+}
+
+.nav-open .nav{
+    transform:translateX(0);    
+}
+
+.nav-open .main-panel{
+    transform: translateX(350px);
+    transition: transform 0.2s;
+}
+
+.open-nav{
+    align-self: flex-start;
+    background: transparent;
+    border:0;
+}
+.open-nav:hover{
+    cursor:pointer;
+    background: rgba(41, 110, 180, 0.367);
+}
+
+.nav .links-container{
+    box-shadow:0 -10px 10px rgba(0,0,0,0.15);
+}
+.nav-link{
+    display:flex;
+    align-items: center;
+    justify-content: space-between;
+    padding:15px 25px;
+    text-decoration: none;
+    color:#000000;
+}
+.nav-text{
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-size:22px;
+    line-height: 27px;
+}
+
+.nav-link:hover, .nav-close:hover{
+    background: rgba(41, 110, 180, 0.367);
+}
+label[for="profile-picture"]{
+    display: flex;
+    flex-direction: column;
+    align-items:center;
+}
+label[for="profile-picture"]>img{
+    width:70%;
 }
 @media only screen and (max-device-width: 420px){
     .container{
