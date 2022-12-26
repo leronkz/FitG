@@ -17,6 +17,11 @@ header{
     border-radius: 30px;
     width:90%;
     height: 80%;
+    display:grid;
+    grid-template-columns: repeat(2,1fr);
+    overflow:auto;
+    /* padding-top:1%;
+    padding-left:1%; */
 }
 
 .save-button{
@@ -35,6 +40,22 @@ header{
     width:15%;
     height: 6%;
 }
+.save-button:active{
+    background: #e5e5e5;
+    -webkit-box-shadow: inset 0px 0px 5px #c1c1c1;
+    -moz-box-shadow: inset 0px 0px 5px #c1c1c1;
+    box-shadow: inset 0px 0px 5px #c1c1c1;
+    outline: none;
+}
 .open-nav{
     position:fixed;
+}
+.activity{
+    display:flex;
+    flex-direction: column;
+    background: #F9EDED;
+    border-radius: 30px;
+    height:100%;
+    width:100%;
+    margin-left:auto;
 }
