@@ -2,7 +2,6 @@
 
 <head>
     <meta charset="utf-8">
-    <link rel="stylesheet" type="text/css" href="../css/style.css">
     <link rel="stylesheet" type="text/css" href="../css/main.css">
     <link rel="stylesheet" type="text/css" href="../css/activity.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,10 +11,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500&display=swap" rel="stylesheet">
     <script src="../js/nav-script.js" defer></script>
     <script src="../js/date-script.js" defer></script>
+    <script src="../js/add-activity.js" defer></script>
     <title>NEW ACTIVITY PAGE</title>
 </head>
-<!-- TODO:
-Zmienic dodawanie cwiczen poprzez drop listy i dodac baze cwiczen z ktorych bedzie mozna wybierac, chyba potem w js sie to zrobi -->
+<!-- Dodać ikonke zamykania popup'u i może pozmieniać style-->
 <body>
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
@@ -29,27 +28,27 @@ Zmienic dodawanie cwiczen poprzez drop listy i dodac baze cwiczen z ktorych bedz
                 <b class="text">Cześć Mateusz</b>
             </label>
             <div class="nav-links-container">
-                <a href="#" class="nav-link">
+                <a href="../views/profile.html" class="nav-link">
                     <span class="nav-text">Profil</span>
                     <ion-icon name="person-outline" size="large"></ion-icon>
                 </a>
-                <a href="#" class="nav-link">
+                <a href="../views/diary.html" class="nav-link">
                     <span class="nav-text">Dziennik aktywności</span>
                     <ion-icon name="reader-outline" size="large"></ion-icon>
                 </a>
-                <a href="#" class="nav-link">
+                <a href="../views/main.html" class="nav-link">
                     <span class="nav-text">Kalendarz aktywności</span>
                     <ion-icon name="calendar-outline" size="large"></ion-icon>
                 </a>
-                <a href="#" class="nav-link">
+                <a href="../views/settings.html" class="nav-link">
                     <span class="nav-text">Ustawienia</span>
                     <ion-icon name="settings-outline" size="large"></ion-icon>
                 </a>
-                <a href="#" class="nav-link">
+                <a href="../views/info.html" class="nav-link">
                     <span class="nav-text">Informacje</span>
                     <ion-icon name="information-circle-outline" size="large"></ion-icon>
                 </a>
-                <a href="#" class="nav-link">
+                <a href="../views/login.html" class="nav-link">
                     <span class="nav-text">Wyloguj się</span>
                     <ion-icon name="log-out-outline" size="large"></ion-icon>
                 </a>
@@ -63,14 +62,45 @@ Zmienic dodawanie cwiczen poprzez drop listy i dodac baze cwiczen z ktorych bedz
             <b class="main-text">Dodawanie nowej aktywności</b>
             <p class="current-date"></p>
         </header>
+        <div id="popup" class="popup">
+            <b class="text">Dodawanie ćwiczenia</b>
+            <!-- <button type="button" class="popup-close">
+                <ion-icon name="close-outline" size="large"></ion-icon>
+            </button> -->
+            <!-- action w formie przesyla dane po kliknieciu!! -->
+            <form action="" autocomplete="off" class="add-form">
+                <!-- <div id="autocomplete-wrapper" class="autocomplete-wrapper"> -->
+                    <input id="autocomplete-input" type="text" placeholder="Nazwa ćwiczenia">
+                <!-- </div> -->
+                <b class="text">Ilość serii</b>
+                <select name="series" id="series">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                </select>
+                <button id="next-button" type="button" class="next-button">Dalej</button>
+            </form>
+            <div id="entry" class="entry">
+                <div id="entry-header" class="entry-header">
+                    <b class="text">Seria</b>
+                    <b class="text">Ciężar</b>
+                    <b class="text">Ilość powtórzeń</b>
+                </div>
+            </div>
+            <button id="save-exercise" class="save-exercise-button">Zapisz ćwiczenie</button>
+        </div>
         <div class="activity-panel">
-            <div class="activity">activity1</div>
-            <div class="activity">activity2</div>
-            <div class="activity">activity2</div>
-            <div class="activity">activity2</div>
-            <div class="activity">activity2</div>
+            <div class="add-activity-panel">
+                <button id="add-activity-button" name="add-activity-button" class="button">Nowe ćwiczenie
+                    <ion-icon name="add-circle-outline" size="large"></ion-icon>
+               </button> 
+            </div>
+            <div class="show-activity">
+            </div>
         </div>
         <button type="button" class="save-button">Zapisz trening</button>
     </div>
-</div>
 </body>

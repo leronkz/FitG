@@ -1,6 +1,7 @@
 body{
     margin:0;
     overflow-x: hidden;
+    overflow-y: hidden;
 }
 
 .container{
@@ -146,6 +147,9 @@ nav{
     background: transparent;
     border:0;
 }
+.open-nav>img{
+    width:3.5rem;
+}
 .open-nav:hover{
     cursor:pointer;
     background: rgba(41, 110, 180, 0.367);
@@ -179,7 +183,7 @@ label[for="profile-picture"]{
     align-items:center;
 }
 label[for="profile-picture"]>img{
-    width:70%;
+    width:10rem;
 }
 @media only screen and (max-device-width: 420px){
     .container{

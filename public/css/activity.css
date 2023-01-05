@@ -1,6 +1,7 @@
 .main-panel{
     width: 100%;
     height: 100%;
+    justify-content: center;
 }
 
 header{
@@ -16,14 +17,22 @@ header{
     background: #d9d9d9;
     border-radius: 30px;
     width:90%;
-    height: 80%;
-    display:grid;
-    grid-template-columns: repeat(2,1fr);
-    overflow:auto;
-    /* padding-top:1%;
-    padding-left:1%; */
+    height:80%;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
 }
-
+.button{
+    border:0;
+    background: transparent;
+    cursor:pointer;
+}
+.button:hover{
+    cursor:pointer;
+    background: rgba(41, 110, 180, 0.367);
+    border-radius:30px;
+}
 .save-button{
 
     box-sizing: border-box;
@@ -37,6 +46,7 @@ header{
     font-weight: 700;
     cursor: pointer;
     margin-top:1%;
+    margin-bottom:1%;
     width:15%;
     height: 6%;
 }
@@ -47,15 +57,176 @@ header{
     box-shadow: inset 0px 0px 5px #c1c1c1;
     outline: none;
 }
-.open-nav{
-    position:fixed;
-}
 .activity{
+    background: #F9EDED;
+    border: 1px solid black;
+    text-align: center;
+}
+.popup{
+    width:60%;
+    height: 30rem;
+    position:absolute;
     display:flex;
     flex-direction: column;
-    background: #F9EDED;
+    align-items: center;
+    background: cadetblue;
     border-radius: 30px;
-    height:100%;
+    visibility: hidden;
+}
+input{
+    box-sizing:border-box;
+    background: #DBEBF0;
+    border: 1px solid #000000;
+    padding-left: 2%;
+    font-family: 'Inter';
+    font-style: normal;
+    line-height: 24px;
+    font-size:16px;
+    margin:1%;
+}
+form{
+    display: flex;
+    flex-direction:column;
+}
+.next-button{
+    box-sizing: border-box;
+    background: #7BB4C4;
+    border: 2px solid #000000;
+    border-radius: 30px;
+    font-family: 'Inter';
+    font-style: normal;
+    line-height: 24px;
+    font-size:16px;
+    font-weight: 700;
+    cursor: pointer;
+    margin-top:2%;
+}
+.autocomplete-list{
+    list-style:none;
+    padding:unset;
+    margin:unset;
+    position:absolute;
     width:100%;
-    margin-left:auto;
+}
+.autocomplete-list li{
+    border: 1px solid #000000;
+    padding-left:2%;
+    border-top:unset;
+    margin:1%;
+}
+.autocomplete-list li:hover{
+    background: #686767;
+}
+.autocomplete-list button{
+    border:unset;
+    background:unset;
+    cursor:pointer;
+    display:block;
+    width: 100%;
+    text-align: left;
+
+}
+.autocomplete-wrapper{
+    display: inline-block;
+    position:relative;
+}
+.entry{
+    margin-top:2%;
+    display: flex;
+    flex-direction: column;
+
+}
+.entry-id{
+    display:flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+}
+.entry-header{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    visibility: hidden;
+}
+.entries-input{
+    width:20%;
+}
+.save-exercise-button{
+    box-sizing: border-box;
+    background: #7BB4C4;
+    border: 2px solid #000000;
+    border-radius: 30px;
+    font-family: 'Inter';
+    font-style: normal;
+    line-height: 24px;
+    font-size:16px;
+    font-weight: 700;
+    cursor: pointer;
+    margin-top:2%;
+    width:40%;
+    visibility: hidden;
+}
+.save-exercise-button:active{
+    background: #e5e5e5;
+    -webkit-box-shadow: inset 0px 0px 5px #c1c1c1;
+    -moz-box-shadow: inset 0px 0px 5px #c1c1c1;
+    box-shadow: inset 0px 0px 5px #c1c1c1;
+    outline: none;
+}
+.next-button:active{
+    background: #e5e5e5;
+    -webkit-box-shadow: inset 0px 0px 5px #c1c1c1;
+    -moz-box-shadow: inset 0px 0px 5px #c1c1c1;
+    box-shadow: inset 0px 0px 5px #c1c1c1;
+    outline: none;
+}
+table{
+    font-family:'Inter';
+    border-collapse: collapse;
+    width:100%;
+}
+td, th {
+    border: 1px solid #dddddd;
+    text-align: center;
+    padding: 8px;
+}
+tr:nth-child(even) {
+    background-color: #dddddd;
+  }
+
+.add-activity-panel{
+    display:flex;
+    flex-direction:row;
+    width:60%;
+    align-items:center;
+    align-self: center;
+    justify-content: center;
+}
+.add-activity-panel>button{
+    display:flex;
+    align-items:center;
+    width:15rem;
+    justify-content:space-around;
+    font-family: 'Inter';
+    font-weight: 500;
+    line-height: 24px;
+    font-size:20px;
+    border: solid 2px black;
+    border-radius:30px;
+}
+.show-activity{
+    display:grid;
+    grid-template-columns: repeat(3,1fr);
+    width:100%;
+    height: 100%;
+    overflow:auto;
+}
+.popup-close{
+    background: none;
+    border:none;
+    cursor:pointer;
+    padding: 15px 25px;
+}
+.popup-close:hover{
+    background: rgba(41, 110, 180, 0.367);
 }

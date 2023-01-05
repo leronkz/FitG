@@ -7,6 +7,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500&display=swap" rel="stylesheet">
     <script src="../js/nav-script.js" defer></script>
+    <script src="../js/change-picture.js" defer></script>
     <title>PROFILE PAGE</title>
 </head>
 <!-- TODO:
@@ -29,23 +30,23 @@ MAKE RESPONSIVE -->
                     <span class="nav-text">Profil</span>
                     <ion-icon name="person-outline" size="large"></ion-icon>
                 </a>
-                <a href="#" class="nav-link">
+                <a href="../views/diary.html" class="nav-link">
                     <span class="nav-text">Dziennik aktywności</span>
                     <ion-icon name="reader-outline" size="large"></ion-icon>
                 </a>
-                <a href="#" class="nav-link">
+                <a href="../views/main.html" class="nav-link">
                     <span class="nav-text">Kalendarz aktywności</span>
                     <ion-icon name="calendar-outline" size="large"></ion-icon>
                 </a>
-                <a href="#" class="nav-link">
+                <a href="../views/settings.html" class="nav-link">
                     <span class="nav-text">Ustawienia</span>
                     <ion-icon name="settings-outline" size="large"></ion-icon>
                 </a>
-                <a href="#" class="nav-link">
+                <a href="../views/info.html" class="nav-link">
                     <span class="nav-text">Informacje</span>
                     <ion-icon name="information-circle-outline" size="large"></ion-icon>
                 </a>
-                <a href="#" class="nav-link">
+                <a href="../views/login.html" class="nav-link">
                     <span class="nav-text">Wyloguj się</span>
                     <ion-icon name="log-out-outline" size="large"></ion-icon>
                 </a>
@@ -57,9 +58,10 @@ MAKE RESPONSIVE -->
         <div class="main-panel">
         <div class="profile-picture">
             <img src="../img/profile_picture.svg">
-            <button class="main-button">Zmień zdjęcie profilowe</button>
+            <button id="change-picture" class="main-button">Zmień zdjęcie profilowe</button>
         </div>
-        <div class="form">
+        <!-- <div class="form"> -->
+        <form class="form">
             <header>
                 <b class="main-text">Twoje konto</b>
             </header>
@@ -98,8 +100,6 @@ MAKE RESPONSIVE -->
             <label for="zatwierdz-zmiany">
                 <button class="main-button">Zapisz zmiany</button>
             </label>
-        </div> 
-        </div>
+        </form> 
     </div>
-
 </body>

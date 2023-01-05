@@ -33,7 +33,9 @@ html {
 .logo{
     display: flex;
     flex-direction: column;
-    align-items: self-end;
+    align-items: center;
+    height:100%;
+    justify-content: flex-end;
 }
 
 form{
@@ -168,5 +170,8 @@ input{
     }
     input{
         padding: 25px;
+    }
+    .main-panel{
+        flex-direction:column;
     }
 }
