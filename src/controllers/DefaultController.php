@@ -11,4 +11,22 @@ class DefaultController extends AppController{
     public function register(){
         $this->render('register');
     }
+    public function main(){
+        $this->render('main');
+    }
+    public function info(){
+        $this->render('info');
+    }
+    public function settings(){
+        $this->render('settings');
+    }
+    public function profile(){
+        $this->render('profile');
+    }
+    public function activity(){
+        $this->render('activity');
+    }
+    public function diary(){
+        $this->render('diary');
+    }
 }

@@ -2,16 +2,16 @@
 
 <head>
     <meta charset="utf-8">
-    <link rel="stylesheet" type="text/css" href="../css/main.css">
-    <link rel="stylesheet" type="text/css" href="../css/activity.css">
+    <link rel="stylesheet" type="text/css" href="public/css/main.css">
+    <link rel="stylesheet" type="text/css" href="public/css/activity.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://kit.fontawesome.com/7fd64f3cef.js" crossorigin="anonymous"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500&display=swap" rel="stylesheet">
-    <script src="../js/nav-script.js" defer></script>
-    <script src="../js/date-script.js" defer></script>
-    <script src="../js/add-activity.js" defer></script>
+    <script src="public/js/nav-script.js" defer></script>
+    <script src="public/js/date-script.js" defer></script>
+    <script src="public/js/add-activity.js" defer></script>
     <title>NEW ACTIVITY PAGE</title>
 </head>
 <!-- Dodać ikonke zamykania popup'u i może pozmieniać style-->
@@ -24,38 +24,38 @@
                 <ion-icon name="close-outline" size="large"></ion-icon>
             </button>
             <label for="profile-picture">
-                <img src="../img/profile_picture.svg">
+                <img src="public/img/profile_picture.svg">
                 <b class="text">Cześć Mateusz</b>
             </label>
             <div class="nav-links-container">
-                <a href="../views/profile.html" class="nav-link">
+                <a href="public/views/profile.html" class="nav-link">
                     <span class="nav-text">Profil</span>
                     <ion-icon name="person-outline" size="large"></ion-icon>
                 </a>
-                <a href="../views/diary.html" class="nav-link">
+                <a href="public/views/diary.html" class="nav-link">
                     <span class="nav-text">Dziennik aktywności</span>
                     <ion-icon name="reader-outline" size="large"></ion-icon>
                 </a>
-                <a href="../views/main.html" class="nav-link">
+                <a href="public/views/main.html" class="nav-link">
                     <span class="nav-text">Kalendarz aktywności</span>
                     <ion-icon name="calendar-outline" size="large"></ion-icon>
                 </a>
-                <a href="../views/settings.html" class="nav-link">
+                <a href="public/views/settings.html" class="nav-link">
                     <span class="nav-text">Ustawienia</span>
                     <ion-icon name="settings-outline" size="large"></ion-icon>
                 </a>
-                <a href="../views/info.html" class="nav-link">
+                <a href="public/views/info.html" class="nav-link">
                     <span class="nav-text">Informacje</span>
                     <ion-icon name="information-circle-outline" size="large"></ion-icon>
                 </a>
-                <a href="../views/login.html" class="nav-link">
+                <a href="public/views/login.html" class="nav-link">
                     <span class="nav-text">Wyloguj się</span>
                     <ion-icon name="log-out-outline" size="large"></ion-icon>
                 </a>
             </div>
         </nav>
         <button type="button" class="open-nav">
-            <img src="../img/lista_rozwijana.svg">
+            <img src="public/img/lista_rozwijana.svg">
         </button>
     <div class="main-panel">
          <header>

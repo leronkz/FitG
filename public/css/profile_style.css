@@ -185,6 +185,9 @@ label[for="profile-picture"]{
 label[for="profile-picture"]>img{
     width:10rem;
 }
+.input-file{
+    display:none;
+}
 @media only screen and (max-device-width: 420px){
     .container{
         flex-direction:column;
