@@ -30,23 +30,23 @@ MAKE RESPONSIVE -->
                     <span class="nav-text">Profil</span>
                     <ion-icon name="person-outline" size="large"></ion-icon>
                 </a>
-                <a href="public/views/diary.html" class="nav-link">
+                <a href="diary" class="nav-link">
                     <span class="nav-text">Dziennik aktywności</span>
                     <ion-icon name="reader-outline" size="large"></ion-icon>
                 </a>
-                <a href="public/views/main.html" class="nav-link">
+                <a href="main" class="nav-link">
                     <span class="nav-text">Kalendarz aktywności</span>
                     <ion-icon name="calendar-outline" size="large"></ion-icon>
                 </a>
-                <a href="public/views/settings.html" class="nav-link">
+                <a href="settings" class="nav-link">
                     <span class="nav-text">Ustawienia</span>
                     <ion-icon name="settings-outline" size="large"></ion-icon>
                 </a>
-                <a href="public/views/info.html" class="nav-link">
+                <a href="info" class="nav-link">
                     <span class="nav-text">Informacje</span>
                     <ion-icon name="information-circle-outline" size="large"></ion-icon>
                 </a>
-                <a href="public/views/login.html" class="nav-link">
+                <a href=" " class="nav-link">
                     <span class="nav-text">Wyloguj się</span>
                     <ion-icon name="log-out-outline" size="large"></ion-icon>
                 </a>
@@ -58,27 +58,37 @@ MAKE RESPONSIVE -->
         <div class="main-panel">
         <div class="profile-picture">
             <img src="public/img/profile_picture.svg" id="photo">
-            <input class="input-file" id="change-picture-input" type="file" value="">
-            <label for="change-picture-input" id="upload-button">Zmień zdjęcie</label>
-<!--                <button id="change-picture" class="main-button">Zmień zdjęcie profilowe</button>-->
+<!--            <img src="public/uploads/--><?//=$image?><!--"-->
+            <form action="changePicture" method="POST" ENCTYPE="multipart/form-data">
+<!--                --><?php //if(isset($messages)){
+//                    foreach ($messages as $message) {
+//                        echo $message;
+//                    }
+//                }
+//                ?>
+                <input class="input-file" id="change-picture-input" type="file" value="" name="file">
+                <label for="change-picture-input" id="upload-button">Zmień zdjęcie</label>
+                <button id="change-picture" class="main-button" type="submit">Zmień zdjęcie profilowe</button>
+            </form>
         </div>
         <!-- <div class="form"> -->
-        <form class="form">
+        <form class="form" action="setUserData" method="POST">
+
             <header>
                 <b class="main-text">Twoje konto</b>
             </header>
             <label for="imie">
                 <b class="text">Imię: </b>
-                <input name="im" type="text" placeholder="Imię">
+                <input name="name" type="text" placeholder="Imię">
             </label>
             <label for="nazwisko">
                 <b class="text">Nazwisko: </b>
-                <input name="nazw" type="text" placeholder="Nazwisko">
+                <input name="surname" type="text" placeholder="Nazwisko">
             </label>
-            <label for="e-mail">
-                <b class="text">E-mail: </b>
-                <input name="mail" type="text" placeholder="E-mail">
-            </label>
+<!--            <label for="e-mail">-->
+<!--                <b class="text">E-mail: </b>-->
+<!--                <input name="mail" type="text" placeholder="E-mail">-->
+<!--            </label>-->
             <label for="plec">
                 <b class="text">Płeć: </b>
                 <div class="man-radio-inline">
@@ -93,14 +103,14 @@ MAKE RESPONSIVE -->
                 </label>
             <label for="wzrost">
                 <b class="text">Wzrost [cm]: </b>
-                <input name="wzro" type="number" placeholder="wzrost">
+                <input name="height" type="number" placeholder="wzrost">
             </label>
             <label for="masa">
                 <b class="text">Masa ciała [kg]: </b>
-                <input name="mas" type="number" placeholder="waga">
+                <input name="weight" type="number" placeholder="waga">
             </label>   
             <label for="zatwierdz-zmiany">
-                <button class="main-button">Zapisz zmiany</button>
+                <button class="main-button" type="submit">Zapisz zmiany</button>
             </label>
         </form> 
     </div>

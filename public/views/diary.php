@@ -63,13 +63,15 @@
                <b class="main-text">Dziennik aktywności</b>
            </header>
            <div class="activity-panel">
+               <form action="show" class="search-form" method="POST">
                 <div class="search-date">
                     <b class="text">Wybierz datę:</b>
                     <input type="date" id="activity-date" name="activity-date">
-                    <button name="search-activity" class="button">
+                    <button name="search-activity" class="button" type="submit">
                         <ion-icon name="search-outline" size="large"></ion-icon>
                     </button>
                 </div>
+               </form>
                 <div class="show-activity">
                     <div class="activity">
                         <b class="text">Wyciskanie na ławce płaskiej 5 serii</b>

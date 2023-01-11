@@ -28,27 +28,27 @@
                 <b class="text">Cześć Mateusz</b>
             </label>
             <div class="nav-links-container">
-                <a href="public/views/profile.html" class="nav-link">
+                <a href="profile" class="nav-link">
                     <span class="nav-text">Profil</span>
                     <ion-icon name="person-outline" size="large"></ion-icon>
                 </a>
-                <a href="public/views/diary.html" class="nav-link">
+                <a href="diary" class="nav-link">
                     <span class="nav-text">Dziennik aktywności</span>
                     <ion-icon name="reader-outline" size="large"></ion-icon>
                 </a>
-                <a href="public/views/main.html" class="nav-link">
+                <a href="main" class="nav-link">
                     <span class="nav-text">Kalendarz aktywności</span>
                     <ion-icon name="calendar-outline" size="large"></ion-icon>
                 </a>
-                <a href="public/views/settings.html" class="nav-link">
+                <a href="settings" class="nav-link">
                     <span class="nav-text">Ustawienia</span>
                     <ion-icon name="settings-outline" size="large"></ion-icon>
                 </a>
-                <a href="public/views/info.html" class="nav-link">
+                <a href="info" class="nav-link">
                     <span class="nav-text">Informacje</span>
                     <ion-icon name="information-circle-outline" size="large"></ion-icon>
                 </a>
-                <a href="public/views/login.html" class="nav-link">
+                <a href="" class="nav-link">
                     <span class="nav-text">Wyloguj się</span>
                     <ion-icon name="log-out-outline" size="large"></ion-icon>
                 </a>
@@ -90,7 +90,7 @@
                     <b class="text">Ilość powtórzeń</b>
                 </div>
             </div>
-            <button id="save-exercise" class="save-exercise-button">Zapisz ćwiczenie</button>
+            <button id="save-exercise" class="save-exercise-button" type="submit">Zapisz ćwiczenie</button>
         </div>
         <div class="activity-panel">
             <div class="add-activity-panel">

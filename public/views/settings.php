@@ -27,15 +27,15 @@
                 <b class="text">Cześć Mateusz</b>
             </label>
             <div class="nav-links-container">
-                <a href="public/views/profile.html" class="nav-link">
+                <a href="profile" class="nav-link">
                     <span class="nav-text">Profil</span>
                     <ion-icon name="person-outline" size="large"></ion-icon>
                 </a>
-                <a href="public/views/diary.html" class="nav-link">
+                <a href="diary" class="nav-link">
                     <span class="nav-text">Dziennik aktywności</span>
                     <ion-icon name="reader-outline" size="large"></ion-icon>
                 </a>
-                <a href="public/views/main.html" class="nav-link">
+                <a href="main" class="nav-link">
                     <span class="nav-text">Kalendarz aktywności</span>
                     <ion-icon name="calendar-outline" size="large"></ion-icon>
                 </a>

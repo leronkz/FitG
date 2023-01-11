@@ -20,9 +20,7 @@ class DefaultController extends AppController{
     public function settings(){
         $this->render('settings');
     }
-    public function profile(){
-        $this->render('profile');
-    }
+
     public function activity(){
         $this->render('activity');
     }

@@ -59,3 +59,13 @@ td, th {
 tr:nth-child(even) {
     background-color: #dddddd;
   }
+
+.search-form{
+    display:flex;
+    flex-direction:row;
+    width:100%;
+    background: none;
+    align-items:center;
+    justify-content: center;
+    padding:0;
+}
