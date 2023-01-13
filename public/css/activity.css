@@ -64,7 +64,7 @@ header{
 }
 .popup{
     width:60%;
-    height: 30rem;
+    height: 35rem;
     position:absolute;
     display:flex;
     flex-direction: column;
@@ -226,6 +226,7 @@ tr:nth-child(even) {
     border:none;
     cursor:pointer;
     padding: 15px 25px;
+    align-self: flex-end;
 }
 .popup-close:hover{
     background: rgba(41, 110, 180, 0.367);

@@ -15,7 +15,7 @@ const activityPanel = document.querySelector(".activity-panel");
 const saveExerciseBtn = document.querySelector("#save-exercise");
 const popUp = document.querySelector(".popup");
 const showActivity = document.querySelector(".show-activity");
-
+const closeBtn = document.querySelector("#popup-close");
 
 // async function getExerciseData(){
 // 	const exerciseRes = await fetch('https://exercisedb.p.rapidapi.com/exercises', options);
@@ -95,6 +95,7 @@ function createEntries(seriesCounter){
 }
 
 function onNextButtonClick(){
+	inputEl.readOnly = true;
 	const exerciseName = inputEl.value;
 	let series = document.querySelector("#series");
 	const numberOfSeries = series.options[series.selectedIndex].value;
@@ -142,7 +143,7 @@ function onSaveExerciseButtonClick(){
 			let gotRow = document.querySelector("#entry-id-"+i);
 			var values = gotRow.getElementsByTagName("input");
 			for(let i=0; i<values.length; i++){
-				if(values[i].value.length===0){
+				if(values[i].value.length===0 || values[i].valueAsNumber<0){
 					values[i].style.setProperty("border","2px solid red");
 					t = false;
 				}else{
@@ -168,9 +169,10 @@ function onSaveExerciseButtonClick(){
 		let header = document.querySelector(".entry-header");
 		header.style.setProperty("visibility","hidden");
 		addElementBtn.style.setProperty("visibility","visible");
+		inputEl.readOnly = false;
 		resetPopUp();
 	}else{
-		alert("Uzupełnij wszystkie pola");
+		alert("Uzupełnij prawidłowo wszystkie pola");
 	}
 }
 saveExerciseBtn.addEventListener("click",onSaveExerciseButtonClick);
@@ -184,4 +186,16 @@ function resetPopUp(){
 	let form = document.querySelector(".add-form");
 	nextBtn.disabled = false;
 	form.reset();
+}
+
+closeBtn.addEventListener("click",closePopUp);
+
+function closePopUp(){
+	popUp.style.setProperty("visibility","hidden");
+	saveExerciseBtn.style.setProperty("visibility","hidden");
+	let header = document.querySelector(".entry-header");
+	header.style.setProperty("visibility","hidden");
+	inputEl.readOnly = false;
+	resetPopUp();
+	addElementBtn.style.setProperty("visibility","visible");
 }

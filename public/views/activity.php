@@ -63,10 +63,10 @@
             <p class="current-date"></p>
         </header>
         <div id="popup" class="popup">
-            <b class="text">Dodawanie ćwiczenia</b>
-            <!-- <button type="button" class="popup-close">
+            <button type="button" class="popup-close" id="popup-close">
                 <ion-icon name="close-outline" size="large"></ion-icon>
-            </button> -->
+            </button>
+            <b class="text">Dodawanie ćwiczenia</b>
             <!-- action w formie przesyla dane po kliknieciu!! -->
             <form action="" autocomplete="off" class="add-form">
                 <!-- <div id="autocomplete-wrapper" class="autocomplete-wrapper"> -->
