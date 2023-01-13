@@ -9,11 +9,20 @@ class UserProfile
     private $birth_date;
     private $height;
     private $weight;
+    private $ID_user;
 
-    public function __construct()
+    public function __construct($image, $name, $surname, $sex, $birth_date, $height, $weight, $ID_user)
     {
-
+        $this->image = $image;
+        $this->name = $name;
+        $this->surname = $surname;
+        $this->sex = $sex;
+        $this->birth_date = $birth_date;
+        $this->height = $height;
+        $this->weight = $weight;
+        $this->ID_user = $ID_user;
     }
+
 
     public function getImage()
     {
@@ -85,6 +94,15 @@ class UserProfile
     public function setWeight($weight)
     {
         $this->weight = $weight;
+    }
+    public function getIDUser()
+    {
+        return $this->ID_user;
+    }
+
+    public function setIDUser($ID_user)
+    {
+        $this->ID_user = $ID_user;
     }
 
 

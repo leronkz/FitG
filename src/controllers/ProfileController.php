@@ -12,21 +12,73 @@ class ProfileController extends AppController
 
     private $messages = [];
     private $userRepository;
-    private $profileImage;
 
     public function __construct()
     {
         parent::__construct();
         $this->userRepository = new UserRepository();
-        $this->profileImage = new UserProfile();
     }
 
-    public function changePicture(){
+    public function hashPassword(string $password): string{
+        $hash = password_hash($password,PASSWORD_BCRYPT);
+        return $hash;
+    }
+
+    public function isEmailUsed($email): bool{
+        $user = $this->userRepository->getUser($email);
+        if(is_null($user)){
+            return false;
+        }
+        return true;
+    }
+
+    public function createUser(){
+        if(!$this->isPost()){
+            return $this->render('register');
+        }
+
+        if($this->isEmailUsed($_POST['email'])){
+            return $this->render('register',['messages'=>["Podany adres email jest juz zajęty"]]);
+        }
+        $hashed_password = $this->hashPassword($_POST['password']);
+        $user = new User($_POST['email'],$hashed_password);
+        $userProfile = new UserProfile("profile_picture.svg","Imie","Nazwisko",null,null,null,null,5);
+        $this->userRepository->addUser($user);
+        $this->userRepository->addUserData($userProfile);
+        return $this->render('login',['messages'=> ['Użytkownik zarejestrowany pomyślnie']]);
+    }
+
+    public function setUserData(){
+        if(!$this->isPost()){
+            return $this->render('profile');
+        }
+        $fileName = "profile_picture.svg";
         if($this->isPost() && is_uploaded_file($_FILES['file']['tmp_name']) && $this->validate($_FILES['file'])){
             move_uploaded_file($_FILES['file']['tmp_name'],dirname(__DIR__).self::UPLOAD_DIRECTORY.$_FILES['file']['name']);
+            $fileName = $_FILES['file']['name'];
         }
-        $this->profileImage->setImage($_FILES['file']['name']);
-//        return $this->render('profile');
+        if(!is_null($this->userRepository->getUserData(1))){
+            $updateProfile = $this->userRepository->getUserData(1);//ciasteczko
+            $updateProfile->setImage($fileName);
+            $updateProfile->setName($_POST['name']);
+            $updateProfile->setSurname($_POST['surname']);
+            $updateProfile->setSex($_POST['sex']);
+            $updateProfile->setBirthDate($_POST['birthday']);
+            $updateProfile->setHeight($_POST['height']);
+            $updateProfile->setWeight($_POST['weight']);
+            $updateProfile->setIDUser(1);
+            $this->userRepository->updateUserData(1,$updateProfile);
+        } //ZAMIAST 1 BEDZIE ID Z CIASTECZKA
+        else {
+            $userProfile = new UserProfile($fileName, $_POST['name'], $_POST['surname'], $_POST['sex'], $_POST['birthday']
+                , $_POST['height'], $_POST['weight'], 1);
+            $this->userRepository->addUserData($userProfile);
+        }
+        return $this->profile();
+    }
+    public function profile(){
+        $userData = $this->userRepository->getUserData(1); // TU tez ciasteczko
+        return $this->render('profile',['userData'=>$userData]);
     }
 
     private function validate(array $file) : bool
@@ -40,25 +92,5 @@ class ProfileController extends AppController
             return false;
         }
         return true;
-    }
-
-    public function setUserData(){
-        if(!$this->isPost()){
-            return $this->render('profile');
-        }
-        $userProfile = new UserProfile();
-        $userProfile->setName($_POST['name']);
-        $userProfile->setSurname($_POST['surname']);
-        $userProfile->setSex($_POST['sex']);
-        $userProfile->setBirthDate($_POST['birthday']);
-        $userProfile->setHeight($_POST['height']);
-        $userProfile->setWeight($_POST['weight']);
-        $userProfile->setImage($this->profileImage->getImage());
-        $this->userRepository->addUserData($userProfile);
-        $this->render('profile');
-    }
-    public function profile(){
-        $image = $this->profileImage->getImage();
-        $this->render('profile',['image'=>$image]);
     }
 }
