@@ -7,7 +7,7 @@ require_once __DIR__.'/../models/UserProfile.php';
 class UserRepository extends Repository
 {
 
-    public function getUser(string $email){
+    public function getUserByEmail(string $email){
         $stmt = $this->database->connect()->prepare('
             SELECT * FROM public.users WHERE email = :email
         ');
@@ -20,12 +20,28 @@ class UserRepository extends Repository
         }
         return new User(
             $user['email'],
-            $user['password']
+            $user['password'],
+            $user['ID_user']
         );
     }
+    public function getUserByID(int $ID_user){
+        $stmt = $this->database->connect()->prepare('
+            SELECT * FROM public.users WHERE "ID_user" = :ID_user
+        ');
+        $stmt->bindParam(':ID_user',$ID_user,PDO::PARAM_INT);
+        $stmt->execute();
+        $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
+        if($user==false){
+            return null;
+        }
+        return new User(
+            $user['email'],
+            $user['password'],
+            $user['ID_user']
+        );
+    }
     public function addUser(User $user){
-        //w rejestracji
         $stmt = $this->database->connect()->prepare('
             INSERT INTO public.users (email, password) 
             VALUES (?, ?)
@@ -98,6 +114,15 @@ class UserRepository extends Repository
             $userData['weight'],
             $userData['ID_user']
         );
+    }
+
+    public function updateUserPassword(int $ID_user, string $password){
+        $stmt = $this->database->connect()->prepare('
+        UPDATE public.users SET password=:pass WHERE "ID_user"=:ID_user
+        ');
+        $stmt->bindParam(":pass",$password,PDO::PARAM_STR);
+        $stmt->bindParam(":ID_user",$ID_user,PDO::PARAM_INT);
+        $stmt->execute();
     }
 
 }

@@ -34,6 +34,5 @@ form.addEventListener("submit",e=>{
         alert("Uzupełnij wszystkie pola prawidłowo")
         e.preventDefault();
     }
-
 });
 

@@ -25,7 +25,7 @@ class ProfileController extends AppController
     }
 
     public function isEmailUsed($email): bool{
-        $user = $this->userRepository->getUser($email);
+        $user = $this->userRepository->getUserByEmail($email);
         if(is_null($user)){
             return false;
         }
@@ -40,25 +40,42 @@ class ProfileController extends AppController
         if($this->isEmailUsed($_POST['email'])){
             return $this->render('register',['messages'=>["Podany adres email jest juz zajęty"]]);
         }
+
         $hashed_password = $this->hashPassword($_POST['password']);
         $user = new User($_POST['email'],$hashed_password);
-        $userProfile = new UserProfile("profile_picture.svg","Imie","Nazwisko",null,null,null,null,5);
         $this->userRepository->addUser($user);
+        $user = $this->userRepository->getUserByEmail($_POST['email']);
+        $userProfile = new UserProfile("profile_picture.svg","Imie","Nazwisko",null,null,null,null,$user->getIDUser());
         $this->userRepository->addUserData($userProfile);
         return $this->render('login',['messages'=> ['Użytkownik zarejestrowany pomyślnie']]);
     }
 
     public function setUserData(){
+        $ID_user = $_COOKIE["ID_user"];
         if(!$this->isPost()){
             return $this->render('profile');
         }
+
         $fileName = "profile_picture.svg";
+
         if($this->isPost() && is_uploaded_file($_FILES['file']['tmp_name']) && $this->validate($_FILES['file'])){
             move_uploaded_file($_FILES['file']['tmp_name'],dirname(__DIR__).self::UPLOAD_DIRECTORY.$_FILES['file']['name']);
             $fileName = $_FILES['file']['name'];
         }
-        if(!is_null($this->userRepository->getUserData(1))){
-            $updateProfile = $this->userRepository->getUserData(1);//ciasteczko
+
+        if(!is_null($this->userRepository->getUserData($ID_user))){
+//            Jesli jakies pole nie zostało uzupełnione to pobiera z bazy
+            $updateProfile = $this->userRepository->getUserData($ID_user);
+
+            if($updateProfile->getImage() != $fileName && $fileName !="profile_picture.svg"){
+                $file_to_delete = dirname(__DIR__).self::UPLOAD_DIRECTORY.$updateProfile->getImage();
+                unlink($file_to_delete);
+            }
+            else if($updateProfile->getImage() != $fileName && $fileName == "profile-picture.svg")
+            {
+                $fileName= $updateProfile->getImage();
+            }
+
             $updateProfile->setImage($fileName);
             $updateProfile->setName($_POST['name']);
             $updateProfile->setSurname($_POST['surname']);
@@ -66,19 +83,45 @@ class ProfileController extends AppController
             $updateProfile->setBirthDate($_POST['birthday']);
             $updateProfile->setHeight($_POST['height']);
             $updateProfile->setWeight($_POST['weight']);
-            $updateProfile->setIDUser(1);
-            $this->userRepository->updateUserData(1,$updateProfile);
-        } //ZAMIAST 1 BEDZIE ID Z CIASTECZKA
+            $updateProfile->setIDUser($ID_user);
+            $this->userRepository->updateUserData($ID_user,$updateProfile);
+        }
         else {
             $userProfile = new UserProfile($fileName, $_POST['name'], $_POST['surname'], $_POST['sex'], $_POST['birthday']
-                , $_POST['height'], $_POST['weight'], 1);
+                , $_POST['height'], $_POST['weight'], $ID_user);
             $this->userRepository->addUserData($userProfile);
         }
         return $this->profile();
     }
+
+    public function updatePassword(){
+        $ID_user = $_COOKIE["ID_user"];
+        if(!$this->isPost()){
+            return $this->render("settings");
+        }
+        $user = $this->userRepository->getUserByID($ID_user);
+
+        $current_password = $user->getPassword();
+        $old_password = $_POST['current-password'];
+        $new_password = $_POST['new-password'];
+        if(!password_verify($old_password,$current_password)){
+            return $this->render('settings',['messages'=>['Podałeś niepoprawne obecne hasło']]);
+        }
+        $this->userRepository->updateUserPassword(5,$this->hashPassword($new_password));
+        return $this->render('settings',['messages'=>['Hasło zostało pomyślnie zmienione']]);
+    }
+
     public function profile(){
-        $userData = $this->userRepository->getUserData(1); // TU tez ciasteczko
-        return $this->render('profile',['userData'=>$userData]);
+        try {
+            if(!isset($_COOKIE['ID_user'])){
+                throw new Exception("No user");
+            }
+            $ID_user = $_COOKIE['ID_user'];
+            $userData = $this->userRepository->getUserData($ID_user); // TU tez ciasteczko
+            return $this->render('profile', ['userData' => $userData]);
+        }catch(Exception $ex){
+            return $this->render('login',['messages'=>['Aby przejść dalej musisz się zalogować']]);
+        }
     }
 
     private function validate(array $file) : bool

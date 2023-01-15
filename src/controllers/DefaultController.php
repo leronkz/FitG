@@ -1,5 +1,4 @@
 <?php
-use function CommonMark\Render;
 
 require_once 'AppController.php';
 
@@ -12,19 +11,54 @@ class DefaultController extends AppController{
         $this->render('register');
     }
     public function main(){
-        $this->render('main');
+        try {
+            if (!isset($_COOKIE['ID_user'])) {
+                throw new Exception("No user");
+            }
+            $this->render('main');
+        }catch (Exception $ex){
+            $this->render('login',['messages'=>['Aby przejść dalej musisz się zalogować']]);
+        }
     }
     public function info(){
-        $this->render('info');
+        try {
+            if (!isset($_COOKIE['ID_user'])) {
+                throw new Exception("No user");
+            }
+            $this->render('info');
+        }catch (Exception $ex){
+            $this->render('login',['messages'=>['Aby przejść dalej musisz się zalogować']]);
+        }
     }
     public function settings(){
-        $this->render('settings');
+        try {
+            if (!isset($_COOKIE['ID_user'])) {
+                throw new Exception("No user");
+            }
+            $this->render('settings');
+        }catch (Exception $ex){
+            $this->render('login',['messages'=>['Aby przejść dalej musisz się zalogować']]);
+        }
     }
 
     public function activity(){
-        $this->render('activity');
+        try {
+            if (!isset($_COOKIE['ID_user'])) {
+                throw new Exception("No user");
+            }
+            $this->render('activity');
+        }catch (Exception $ex){
+            $this->render('login',['messages'=>['Aby przejść dalej musisz się zalogować']]);
+        }
     }
     public function diary(){
-        $this->render('diary');
+        try {
+            if (!isset($_COOKIE['ID_user'])) {
+                throw new Exception("No user");
+            }
+            $this->render('diary');
+        }catch (Exception $ex){
+            $this->render('login',['messages'=>['Aby przejść dalej musisz się zalogować']]);
+        }
     }
 }

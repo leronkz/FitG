@@ -10,7 +10,6 @@ const form = document.querySelector("form");
 function containsWhitespace(str){
     return /\s/.test(str);
 }
-
 function checkName(str){
     if(str.length === 0)
         return true;
@@ -22,7 +21,6 @@ function checkName(str){
         return false;
     return true;
 }
-
 function checkDate(date){
     if(date.length === 0)
         return true;
@@ -32,7 +30,6 @@ function checkDate(date){
     currMonth = currDate.getMonth()+1;
     currDay = currDate.getDate();
 
-    // let input = birthday.value;
     let d = new Date(date);
 
     if(!!d.valueOf()){
@@ -56,12 +53,10 @@ function isNumber(num) {
     if(num.valueAsNumber<0)
         return false;
 }
-
 function isSelected(){
     if(!sex_man.checked && !sex_woman.checked)
         return false;
 }
-
 form.addEventListener("submit",e=>{
     let t;
 

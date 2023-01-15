@@ -31,6 +31,7 @@ body{
     line-height: 24px;
     font-size:16px;
     font-weight: 700;
+    width: 15rem;
 }
 .main-button:active{
     background: #e5e5e5;
@@ -200,6 +201,9 @@ nav{
 }
 .input-file{
     display:none;
+}
+#upload-button:hover{
+    cursor: pointer;
 }
 @media only screen and (max-device-width: 420px){
     .container{

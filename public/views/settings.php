@@ -43,11 +43,11 @@
                     <span class="nav-text">Ustawienia</span>
                     <ion-icon name="settings-outline" size="large"></ion-icon>
                 </a>
-                <a href="public/views/info.html" class="nav-link">
+                <a href="info" class="nav-link">
                     <span class="nav-text">Informacje</span>
                     <ion-icon name="information-circle-outline" size="large"></ion-icon>
                 </a>
-                <a href="public/views/login.html" class="nav-link">
+                <a href="login" class="nav-link">
                     <span class="nav-text">Wyloguj się</span>
                     <ion-icon name="log-out-outline" size="large"></ion-icon>
                 </a>
@@ -63,48 +63,23 @@
                 </header>
             </div>
             <div class="account">
-                <!-- <label for="header">
-                    <img src ="../img/settings/account.svg">
-                    <b class="settings-text">Konto</b>
-                </label> -->
-                <form class="change-password">
+                <form action="updatePassword" class="change-password" method="POST">
+                    <div class="messages">
+                        <?php if(isset($messages)){
+                            foreach ($messages as $message) {
+                                echo $message;
+                            }
+                        }
+                        ?>
+                    </div>
                     <b class="text" style="font-size:30px;">Zmień hasło</b>
                     <b class="text">Obecne hasło</b>
                     <input name="current-password" type="password" placeholder="********">
                     <b class="text">Nowe hasło</b>
                     <input name="new-password" type="password" placeholder="********">
-                    <button name="update-button" class="button">Aktualizuj hasło</button>
+                    <button name="update-button" class="button" type="submit">Aktualizuj hasło</button>
                 </form>
             </div>
-            <!-- <div class="units">
-                <label for="header">
-                    <img src="../img/settings/units.svg">
-                    <b class="settings-text">Jednostki</b>
-                </label>
-                <div class="units-panel">
-                    <form class="change-units">
-                        <label for="weight">
-                            <b class="text">Waga:</b>
-                            <div class="man-radio-inline">
-                                <input type="radio" id="weight_KG" name="weight" value="KG">
-                                <b class="text">KG</b>
-                                <input type="radio" id="weight_LBS" name="weight" value="LBS">
-                                <b class="text">LBS</b>
-                            </div>
-                        </label>
-                        <label for="height">
-                            <b class="text">Wzrost:</b>
-                            <div class="man-radio-inline">
-                                <input type="radio" id="height_CM" name="height" value="CM">
-                                <b class="text">CM</b>
-                                <input type="radio" id="height_INCH" name="height" value="INCH">
-                                <b class="text">INCH</b>
-                            </div>
-                        </label>
-                        <button name="save-units-button" class="button">Zapisz jednostki</button>
-                    </form>
-                </div>
-            </div> -->
         </div>
     </div>
 </body>
