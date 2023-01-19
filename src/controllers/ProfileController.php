@@ -45,7 +45,7 @@ class ProfileController extends AppController
         $user = new User($_POST['email'],$hashed_password);
         $this->userRepository->addUser($user);
         $user = $this->userRepository->getUserByEmail($_POST['email']);
-        $userProfile = new UserProfile("profile_picture.svg","Imie","Nazwisko",null,null,null,null,$user->getIDUser());
+        $userProfile = new UserProfile("profile_picture.svg",null,null,null,null,null,null,$user->getIDUser());
         $this->userRepository->addUserData($userProfile);
         return $this->render('login',['messages'=> ['Użytkownik zarejestrowany pomyślnie']]);
     }
@@ -55,42 +55,53 @@ class ProfileController extends AppController
         if(!$this->isPost()){
             return $this->render('profile');
         }
-
-        $fileName = "profile_picture.svg";
-
-        if($this->isPost() && is_uploaded_file($_FILES['file']['tmp_name']) && $this->validate($_FILES['file'])){
-            move_uploaded_file($_FILES['file']['tmp_name'],dirname(__DIR__).self::UPLOAD_DIRECTORY.$_FILES['file']['name']);
-            $fileName = $_FILES['file']['name'];
-        }
-
         if(!is_null($this->userRepository->getUserData($ID_user))){
-//            Jesli jakies pole nie zostało uzupełnione to pobiera z bazy
             $updateProfile = $this->userRepository->getUserData($ID_user);
-
-            if($updateProfile->getImage() != $fileName && $fileName !="profile_picture.svg"){
-                $file_to_delete = dirname(__DIR__).self::UPLOAD_DIRECTORY.$updateProfile->getImage();
-                unlink($file_to_delete);
+            $fileName = $updateProfile->getImage();
+            if($this->isPost() && is_uploaded_file($_FILES['file']['tmp_name']) && $this->validate($_FILES['file'])){
+                move_uploaded_file($_FILES['file']['tmp_name'],dirname(__DIR__).self::UPLOAD_DIRECTORY.$_FILES['file']['name']);
+                $fileName = $_FILES['file']['name'];
             }
-            else if($updateProfile->getImage() != $fileName && $fileName == "profile-picture.svg")
-            {
-                $fileName= $updateProfile->getImage();
+            if($updateProfile->getImage() !== $fileName && $fileName !== "profile_picture.svg"){
+                if($updateProfile->getImage() !== "profile_picture.svg") {
+                    $file_to_delete = dirname(__DIR__) . self::UPLOAD_DIRECTORY . $updateProfile->getImage();
+                    unlink($file_to_delete);
+                }
             }
-
             $updateProfile->setImage($fileName);
-            $updateProfile->setName($_POST['name']);
-            $updateProfile->setSurname($_POST['surname']);
-            $updateProfile->setSex($_POST['sex']);
-            $updateProfile->setBirthDate($_POST['birthday']);
-            $updateProfile->setHeight($_POST['height']);
-            $updateProfile->setWeight($_POST['weight']);
+            if(!isset($_POST['name']))
+                $updateProfile->setName($updateProfile->getName());
+            else
+                $updateProfile->setName($_POST['name']);
+            if(!isset($_POST['surname']))
+                $updateProfile->setSurname($updateProfile->getSurname());
+            else
+                $updateProfile->setSurname($_POST['surname']);
+            if(!isset($_POST['sex']))
+                $updateProfile->setSex($updateProfile->getSex());
+            else
+                $updateProfile->setSex($_POST['sex']);
+            if(!isset($_POST['birthday']) || $_POST['birthday']=="")
+                $updateProfile->setBirthDate($updateProfile->getBirthDate());
+            else
+                $updateProfile->setBirthDate($_POST['birthday']);
+            if(!isset($_POST['height']) || $_POST['height']=="")
+                $updateProfile->setHeight($updateProfile->getHeight());
+            else
+                $updateProfile->setHeight($_POST['height']);
+            if(!isset($_POST['weight']) || $_POST['weight']=="")
+                $updateProfile->setWeight($updateProfile->getWeight());
+            else
+                $updateProfile->setWeight($_POST['weight']);
+
             $updateProfile->setIDUser($ID_user);
             $this->userRepository->updateUserData($ID_user,$updateProfile);
         }
-        else {
-            $userProfile = new UserProfile($fileName, $_POST['name'], $_POST['surname'], $_POST['sex'], $_POST['birthday']
-                , $_POST['height'], $_POST['weight'], $ID_user);
-            $this->userRepository->addUserData($userProfile);
-        }
+//        else {
+//            $userProfile = new UserProfile($fileName, $_POST['name'], $_POST['surname'], $_POST['sex'], $_POST['birthday']
+//                , $_POST['height'], $_POST['weight'], $ID_user);
+//            $this->userRepository->addUserData($userProfile);
+//        }
         return $this->profile();
     }
 
@@ -117,11 +128,23 @@ class ProfileController extends AppController
                 throw new Exception("No user");
             }
             $ID_user = $_COOKIE['ID_user'];
-            $userData = $this->userRepository->getUserData($ID_user); // TU tez ciasteczko
+            $userData = $this->userRepository->getUserData($ID_user);
             return $this->render('profile', ['userData' => $userData]);
         }catch(Exception $ex){
             return $this->render('login',['messages'=>['Aby przejść dalej musisz się zalogować']]);
         }
+    }
+
+    public function loadData(){
+        header('Content-type: application/json');
+        http_response_code(200);
+        echo json_encode($this->userRepository->getUserData($_COOKIE["ID_user"]));
+    }
+
+    public function getRole(){
+        header('Content-type: application/json');
+        http_response_code(200);
+        echo json_encode($this->userRepository->getUserRoleByID($_COOKIE["ID_user"]));
     }
 
     private function validate(array $file) : bool

@@ -2,3 +2,5 @@ public/uploads/
 .idea
 .vscode
 .env
+src/models/ActivityInfo.php
+src/models/ExerciseInfo.php

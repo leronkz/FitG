@@ -48,78 +48,84 @@ function checkDate(date){
     }
 }
 function isNumber(num) {
-    if(num.length===0)
-        return true;
-    if(num.valueAsNumber<0)
-        return false;
+    return num >= 0;
+
 }
 function isSelected(){
     if(!sex_man.checked && !sex_woman.checked)
         return false;
 }
-form.addEventListener("submit",e=>{
-    let t;
+//TODO DODAC WALIDACJE DANYCH
 
+form.addEventListener("submit",e=>{
     if(!checkName(name.value)){
         name.style.setProperty("border","2px solid red");
-        t = false;
         e.preventDefault();
     }else{
-        t = true;
-    }
-
-    if(t)
         name.style.setProperty("border","1px solid #000000");
+    }
 
     if(!checkName(surname.value)){
         surname.style.setProperty("border","2px solid red");
-        t = false;
         e.preventDefault();
     }else{
-        t = true;
-    }
-
-    if(t)
         surname.style.setProperty("border","1px solid #000000");
+    }
 
     if(!checkDate(date.value)){
         date.style.setProperty("border","2px solid red");
-        t = false;
         e.preventDefault();
     }else{
-        t = true;
-    }
-    if(t)
         date.style.setProperty("border","1px solid #000000");
-
-    if(!isNumber(weight.value)){
-        weight.style.setProperty("border","2px solid red");
-        t = false;
-        e.preventDefault();
-    }else{
-        t = true;
     }
-    if(t)
-        weight.style.setProperty("border","1px solid #000000");
-
-    if(!isNumber(height.value)){
-        height.style.setProperty("border","2px solid red");
-        t = false;
-        e.preventDefault();
-    }else{
-        t = true;
-    }
-    if(t)
-        height.style.setProperty("border","1px solid #000000");
-
     if(!isSelected()){
         sex_man.style.setProperty("border","2px solid red");
         sex_woman.style.setProperty("border","2px solid red");
-        t = false;
         e.preventDefault();
-    }
-    if(t) {
+    }else{
         sex_man.style.setProperty("border", "1px solid #000000");
         sex_woman.style.setProperty("border", "1px solid #000000");
     }
 });
+
+
+function getData(){
+    fetch("/loadData").then(function(response){
+        return response.json();
+    }).then(function(userData){
+        showData(userData)
+    });
+}
+
+function showData(userData){
+    if(!userData['name'])
+        name.defaultValue = "Imie";
+    else
+        name.defaultValue = userData['name'];
+    if(!userData['surname'])
+        surname.defaultValue = "Nazwisko"
+    else
+        surname.defaultValue = userData['surname'];
+    if(userData['birth_date'])
+        birthday.defaultValue = userData['birth_date'];
+
+    if(!userData['weight'])
+        weight.defaultValue = 0;
+    else
+        weight.defaultValue = userData['weight'];
+    if(!userData['height'])
+        height.defaultValue = 0;
+    else
+        height.defaultValue = userData['height'];
+
+    if(userData['sex']) {
+        if (userData['sex'] === "MALE") {
+            sex_woman.checked = false;
+            sex_man.checked = true;
+        } else if (userData['sex'] === "FEMALE") {
+            sex_man.checked = false;
+            sex_woman.checked = true;
+        }
+    }
+}
+getData();

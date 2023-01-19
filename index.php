@@ -16,11 +16,17 @@ Routing::get('activity','DefaultController');
 Routing::get('info','DefaultController');
 Routing::get('settings','DefaultController');
 Routing::get('logout','SecurityController');
+Routing::get('loadData','ProfileController');
+Routing::get('getRole','ProfileController');
+Routing::get('admin','DefaultController');
+
 
 Routing::post('login','SecurityController');
 Routing::post('setUserData','ProfileController');
 Routing::post('show','ActivityController');
 Routing::post('createUser','ProfileController');
 Routing::post('updatePassword','ProfileController');
+Routing::post('sendData','ActivityController');
+
 Routing::run($path);
 ?>

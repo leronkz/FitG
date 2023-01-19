@@ -17,6 +17,8 @@ const popUp = document.querySelector(".popup");
 const showActivity = document.querySelector(".show-activity");
 const closeBtn = document.querySelector("#popup-close");
 
+const saveTrainingBtn = document.querySelector(".save-button");
+
 // async function getExerciseData(){
 // 	const exerciseRes = await fetch('https://exercisedb.p.rapidapi.com/exercises', options);
 // 	const data = await exerciseRes.json();
@@ -199,3 +201,37 @@ function closePopUp(){
 	resetPopUp();
 	addElementBtn.style.setProperty("visibility","visible");
 }
+
+saveTrainingBtn.addEventListener("click",sendData);
+
+function sendData(){
+	const listItems = showActivity.children;
+
+	const data = {};
+	let ex = [];
+	data["date"] = document.querySelector(".current-date").innerText;
+	let tag;
+	for (let i = 0; i < listItems.length; i++) {
+		let n = listItems[i].firstElementChild.innerText;
+		ex.push(n);
+		let tds = listItems[i].getElementsByTagName("td");
+		for (let j = 0; j < tds.length; j++) {
+			ex.push(tds[j].innerText);
+		}
+		// console.log("exercise"+i);
+		tag = "exercise" + i.toString();
+		data[tag] = "aha";
+		ex = [];
+	}
+	console.log(data);
+	fetch("/sendData",{
+		method: "POST",
+		headers:{
+			'Content-Type': 'application/json'
+		},
+		body: JSON.stringify(data)
+	}).then(function(response){
+		return response.json();
+	});
+}
+

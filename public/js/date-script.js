@@ -4,8 +4,8 @@ function getDate(){
     currYear = date.getFullYear(),
     currMonth = date.getMonth(),
     currDay = date.getDate();
-
-    currentDate.innerText=`${currDay}.${currMonth+1}.${currYear}`;
+    // currentDate.innerText=`${currDay}.${currMonth+1}.${currYear}`;
+    currentDate.innerText = date.toISOString().slice(0,10);
 }
 
 getDate();

@@ -24,7 +24,7 @@ MAKE RESPONSIVE -->
         </button>
         <div class="profile-picture">
             <div class="picture" style="background-image:url('public/uploads/<?= $userData->getImage()?>')"></div>
-            <b class="text">Witaj <?= $userData->getName()?></b>
+            <b class="text">Cześć <?= $userData->getName()?></b>
         </div>
         <div class="nav-links-container">
             <a href="#" class="nav-link">
@@ -46,6 +46,10 @@ MAKE RESPONSIVE -->
             <a href="info" class="nav-link">
                 <span class="nav-text">Informacje</span>
                 <ion-icon name="information-circle-outline" size="large"></ion-icon>
+            </a>
+            <a href="admin" class="nav-link" id="admin">
+                <span class="nav-text" id="admin-panel">Panel administratora</span>
+                <ion-icon name="key-outline" size="large"></ion-icon>
             </a>
             <a href="logout" class="nav-link">
                 <span class="nav-text">Wyloguj się</span>
@@ -69,16 +73,16 @@ MAKE RESPONSIVE -->
             <div class="user-data">
                 <label for="imie">
                     <b class="text">Imię: </b>
-                    <input id="name" name="name" type="text" placeholder="<?= $userData->getName()?>">
+                    <input id="name" name="name" type="text" value="Imie">
                 </label>
                 <label for="nazwisko">
                     <b class="text">Nazwisko: </b>
-                    <input id="surname" name="surname" type="text" placeholder="<?= $userData->getSurname()?>">
+                    <input id="surname" name="surname" type="text" value="Nazwisko">
                 </label>
                 <label for="plec">
                     <b class="text">Płeć: </b>
                     <div class="man-radio-inline">
-                        <input type="radio" id="sex_MALE" name="sex" value="MALE">
+                        <input type="radio" id="sex_MALE" name="sex" value="MALE" checked>
                         <b class="text">Mężczyzna</b>
                         <input type="radio" id="sex_FEMALE" name="sex" value="FEMALE">
                         <b class="text">Kobieta</b>
@@ -89,11 +93,11 @@ MAKE RESPONSIVE -->
                 </label>
                 <label for="wzrost">
                     <b class="text">Wzrost [cm]: </b>
-                    <input id="height" name="height" type="number" placeholder=<?= $userData->getHeight()?>>
+                    <input id="height" name="height" type="number" value=0 min="0" oninput="validity.valid||(value='');">
                 </label>
                 <label for="masa">
                     <b class="text">Masa ciała [kg]: </b>
-                    <input id="weight" name="weight" type="number" placeholder=<?= $userData->getWeight()?>>
+                    <input id="weight" name="weight" type="number" value=0 min="0" oninput="validity.valid||(value='');">
                 </label>
                 <label for="zatwierdz-zmiany">
                     <button id="save-button" class="main-button" type="submit">Zapisz zmiany</button>

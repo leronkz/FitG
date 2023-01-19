@@ -1,6 +1,6 @@
 <?php
 
-class UserProfile
+class UserProfile implements JsonSerializable
 {
     private $image;
     private $name;
@@ -105,5 +105,17 @@ class UserProfile
         $this->ID_user = $ID_user;
     }
 
-
+    public function jsonSerialize()
+    {
+       return array(
+           'image'=>$this->image,
+           'name'=>$this->name,
+           'surname'=>$this->surname,
+           'sex'=>$this->sex,
+           'birth_date'=>$this->birth_date,
+           'height'=>$this->height,
+           'weight'=>$this->weight,
+           'ID_user'=>$this->ID_user
+       );
+    }
 }

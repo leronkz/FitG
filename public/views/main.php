@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"/>
     <script src="public/js/calendar-script.js" defer></script>
+    <script src="public/js/nav-script.js" defer></script>
     <title>MAIN PAGE</title>
 </head>
 
@@ -22,10 +23,10 @@ MAKE RESPONSIVE -->
             <button type="button" class="nav-close">
                 <ion-icon name="close-outline" size="large"></ion-icon>
             </button>
-            <label for="profile-picture">
-                <img src="public/img/profile_picture.svg">
-                <b class="text">Cześć Mateusz</b>
-            </label>
+            <div class="profile-picture">
+                <div class="picture" id="prof-picture" style="background-image:url('public/uploads/profile_picture.svg')"></div>
+                <b class="text" id="name-text"></b>
+            </div>
             <div class="nav-links-container">
                 <a href="profile" class="nav-link">
                     <span class="nav-text">Profil</span>
@@ -46,6 +47,10 @@ MAKE RESPONSIVE -->
                 <a href="info" class="nav-link">
                     <span class="nav-text">Informacje</span>
                     <ion-icon name="information-circle-outline" size="large"></ion-icon>
+                </a>
+                <a href="admin" class="nav-link" id="admin">
+                    <span class="nav-text">Panel administratora</span>
+                    <ion-icon name="key-outline" size="large"></ion-icon>
                 </a>
                 <a href="logout" class="nav-link">
                     <span class="nav-text">Wyloguj się</span>
@@ -81,9 +86,11 @@ MAKE RESPONSIVE -->
                     <ul class="days"></ul>
                 </div>
             </div>
-            <button class="add-activity">
-                <b class="text">Dodaj trening</b>
-            </button>
+            <a href="activity" id="to-activity">
+                <button class="add-activity">
+                    <b class="text">Dodaj trening</b>
+                </button>
+            </a>
         </div>
     </div>
 

@@ -33,7 +33,7 @@
 <!--                <b class="text">Imię</b>-->
 <!--                <input name="name" type="text" placeholder="imie">-->
                 <button class="register-button" type="submit" id="submitBtn">Register</button>
-                <button class="login-button">Sign in</button>
+                <a href=" "><button class="login-button" type="button">Sign in</button></a>
              </form>
         </div>
     </div>

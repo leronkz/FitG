@@ -28,7 +28,7 @@
                 <b class="text">Password</b>
                 <input name="password" type="password" placeholder="*********">
                 <button class="login-button" type="submit">Login</button>
-                <button class="register-button">Sign up</button>
+                <a href="register"><button class="register-button" type="button">Sign up</button></a>
              </form>
         </div>
     </div>

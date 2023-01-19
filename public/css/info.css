@@ -33,6 +33,16 @@ html {
     font-style:normal;
     font-size:15px;
 }
+.name-text{
+    line-height: 24px;
+    font-size: 17px;
+    font-weight: 700;
+    font-family: 'Inter';
+    font-style: normal;
+}
+#admin{
+/*   switch pomiedzy block a flex*/
+}
 
 @media only screen and (max-device-width: 420px){
    .main-text{

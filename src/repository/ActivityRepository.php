@@ -2,23 +2,101 @@
 
 require_once 'Repository.php';
 require_once __DIR__.'/../models/Activity.php';
-
+require_once __DIR__.'/../models/Exercise.php';
 class ActivityRepository extends Repository
 {
-    public function getActivity(string $date){
-        $stmt = $this->database->connect()->prepare('
-        SELECT * FROM public.activities WHERE activity_date = :date');
 
-        $stmt->bindParam(':date',$date,PDO::PARAM_STR);
+//    public function getExerciseByID(int $ID_exercise){
+//        $stmt = $this->database->connect()->prepare('
+//        SELECT * FROM public.exercises WHERE "ID_exercise"=:ID_exercise
+//        ');
+//        $stmt->bindParam(':ID_exercise',$ID_exercise,PDO::PARAM_INT);
+//        $stmt->execute();
+//        $exercise = $stmt->fetch(PDO::FETCH_ASSOC);
+//        if($exercise == false){
+//            return null;
+//        }
+//        return new Exercise(
+//          $exercise['exercise_name'],
+//          $exercise['number_of_series']
+//        );
+//    }
+
+
+    public function getActivity(int $ID_user,string $date){
+        $stmt = $this->database->connect()->prepare('
+        SELECT * FROM public.activities WHERE "ID_user"=:ID_user AND activity_date=:date
+        ');
+        $stmt->bindParam(":ID_user", $ID_user,PDO::PARAM_INT);
+        $stmt->bindParam(":date", $date,PDO::PARAM_STR);
         $stmt->execute();
         $activity = $stmt->fetch(PDO::FETCH_ASSOC);
-
-        if($activity == false){
+        if($activity == false)
             return null;
-        }
+        return new Activity(
+            $activity['ID_user'],
+            $activity['activity_date']
+        );
     }
-
+    public function isAddedActivity(Activity $activity){
+        $stmt = $this->database->connect()->prepare('
+        SELECT * FROM public.activities WHERE "ID_user"=:ID_user AND activity_date=:date
+        ');
+        $IDUser = $activity->getIDUser();
+        $stmt->bindParam(":ID_user", $IDUser,PDO::PARAM_INT);
+        $activityDate = $activity->getActivityDate();
+        $stmt->bindParam(":date", $activityDate,PDO::PARAM_STR);
+        $stmt->execute();
+        $act = $stmt->fetch(PDO::FETCH_ASSOC);
+        if($act == false){
+            return false;
+        }
+        return true;
+    }
     public function addActivity(Activity $activity){
 
+        if(!$this->isAddedActivity($activity)) {
+            $stmt = $this->database->connect()->prepare('
+            INSERT INTO public.activities("ID_user", activity_date) 
+            VALUES(?,?)
+            ');
+            $stmt->execute([
+                $activity->getIDUser(),
+                $activity->getActivityDate()
+            ]);
+        }
+    }
+//    public function addActivityInfo(Activity $activity,Exercise $exercise){
+//        $stmt = $this->database->connect()->prepare('
+//        INSERT INTO public.activity_info("ID_activity", "ID_exercise")
+//        VALUES(?,?)
+//        ');
+//        $stmt->execute([
+//           $activity->getIDActivity(),
+//           $exercise->getIDExercise()
+//        ]);
+//    }
+    public function addExercise(Exercise $exercise){
+        $stmt = $this->database->connect()->prepare('
+        INSERT INTO public.exercises(exercise_name, number_of_series, s_weight1,s_reps1,s_weight2,s_reps2,s_weight3,s_reps3,s_weight4,s_reps4,s_weight5,s_reps5,s_weight6,s_reps6,"ID_activity") 
+        VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)
+        ');
+        $stmt->execute([
+            $exercise->getExerciseName(),
+            $exercise->getNumOfSeries(),
+            $exercise->getSWeight1(),
+            $exercise->getSReps1(),
+            $exercise->getSWeight2(),
+            $exercise->getSReps2(),
+            $exercise->getSWeight3(),
+            $exercise->getSReps3(),
+            $exercise->getSWeight4(),
+            $exercise->getSReps4(),
+            $exercise->getSWeight5(),
+            $exercise->getSReps5(),
+            $exercise->getSWeight6(),
+            $exercise->getSReps6(),
+            $exercise->getIDActivity()
+        ]);
     }
 }

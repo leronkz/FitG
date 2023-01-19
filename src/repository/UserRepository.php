@@ -56,7 +56,6 @@ class UserRepository extends Repository
         $stmt = $this->database->connect()->prepare('
         INSERT INTO public.users_data ("ID_user", sex, birth_date, height, weight, image, name, surname) 
         VALUES (?,?,?,?,?,?,?,?)');
-        $ID_user = 1;
         $stmt->execute([
             $profile->getIDUser(),
             $profile->getSex(),
@@ -125,4 +124,19 @@ class UserRepository extends Repository
         $stmt->execute();
     }
 
+    public function getUserRoleByID(int $ID_user){
+        $stmt = $this->database->connect()->prepare('
+        SELECT u."ID_user", r.role
+        FROM public.users u
+        LEFT OUTER JOIN public.roles ri on u."ID_user" = ri."ID_user"
+        INNER JOIN public.roles_info r on r."ID_role" = ri."ID_role"
+        WHERE u."ID_user"=:ID_user
+        ');
+        $stmt->bindParam(":ID_user",$ID_user,PDO::PARAM_INT);
+        $stmt->execute();
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        if($result == false)
+            return null;
+        return $result;
+    }
 }

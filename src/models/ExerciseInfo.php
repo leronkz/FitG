@@ -1,9 +1,8 @@
 <?php
 
-class Exercise
+class ExerciseInfo
 {
-    private $exercise_name;
-    private $num_of_series;
+    private $ID_exercise;
     private $s_weight1;
     private $s_reps1;
     private $s_weight2;
@@ -16,14 +15,10 @@ class Exercise
     private $s_reps5;
     private $s_weight6;
     private $s_reps6;
-    private $ID_exercise;
-    private $ID_activity;
 
-
-    public function __construct($exercise_name, $num_of_series,$s_weight1, $s_reps1, $s_weight2, $s_reps2, $s_weight3, $s_reps3, $s_weight4, $s_reps4, $s_weight5, $s_reps5, $s_weight6, $s_reps6,$ID_activity, $ID_exercise=null)
+    public function __construct($ID_exercise, $s_weight1, $s_reps1, $s_weight2, $s_reps2, $s_weight3, $s_reps3, $s_weight4, $s_reps4, $s_weight5, $s_reps5, $s_weight6, $s_reps6)
     {
-        $this->exercise_name = $exercise_name;
-        $this->num_of_series = $num_of_series;
+        $this->ID_exercise = $ID_exercise;
         $this->s_weight1 = $s_weight1;
         $this->s_reps1 = $s_reps1;
         $this->s_weight2 = $s_weight2;
@@ -36,28 +31,6 @@ class Exercise
         $this->s_reps5 = $s_reps5;
         $this->s_weight6 = $s_weight6;
         $this->s_reps6 = $s_reps6;
-        $this->ID_activity = $ID_activity;
-        $this->ID_exercise = $ID_exercise;
-    }
-
-    public function getExerciseName()
-    {
-        return $this->exercise_name;
-    }
-
-    public function setExerciseName($exercise_name)
-    {
-        $this->exercise_name = $exercise_name;
-    }
-
-    public function getNumOfSeries()
-    {
-        return $this->num_of_series;
-    }
-
-    public function setNumOfSeries($num_of_series)
-    {
-        $this->num_of_series = $num_of_series;
     }
 
     public function getIDExercise()
@@ -69,6 +42,7 @@ class Exercise
     {
         $this->ID_exercise = $ID_exercise;
     }
+
     public function getSWeight1()
     {
         return $this->s_weight1;
@@ -189,14 +163,5 @@ class Exercise
         $this->s_reps6 = $s_reps6;
     }
 
-    public function getIDActivity()
-    {
-        return $this->ID_activity;
-    }
-
-    public function setIDActivity($ID_activity)
-    {
-        $this->ID_activity = $ID_activity;
-    }
 
 }
