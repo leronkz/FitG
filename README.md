@@ -4,58 +4,45 @@
 * [Technologies Used](#technologies-used)
 * [Features](#features)
 * [Screenshots](#screenshots)
-* [Setup](#setup)
 * [Usage](#usage)
 * [Project Status](#project-status)
-* [Room for Improvement](#room-for-improvement)
-* [Acknowledgements](#acknowledgements)
 * [Contact](#contact)
-<!-- * [License](#license) -->
-
 
 ## General Information
-- Provide general information about your project here.
-- What problem does it (intend to) solve?
-- What is the purpose of your project?
-- Why did you undertake it?
-<!-- You don't have to answer all the questions - just the ones relevant to your project. -->
+FitG is an application made for people who want to keep up with their training activities. You can store your training days by simply adding the exercises to the certain day. The app comes with help when you want to see if you are making progress.
 
 
 ## Technologies Used
 - HTML5
 - CSS3
-- PostgreSQL - version 9.6
-- Docker - version 4.12
-- PHP - version 8.0
+- PostgreSQL
+- Docker 
+- PHP 8.0
+- JavaScript
 
 
 ## Features
-List the ready features here:
-- Awesome feature 1
-- Awesome feature 2
-- Awesome feature 3
+- The user can add training to a certain day
+- The user can check history of training
+- The user can set his parameters and update them throughout using the app
+- The user can change password
+- The user can set his profile picture
+- The admin can see the statistics of the app and delete registered users
 
 
 ## Screenshots
 ![Example screenshot](./img/screenshot.png)
 <!-- If you have screenshots you'd like to share, include them here. -->
 
-
-## Setup
-What are the project requirements/dependencies? Where are they listed? A requirements.txt or a Pipfile.lock file perhaps? Where is it located?
-
-Proceed to describe how to install / setup one's local environment / get started with the project.
-
-
 ## Usage
-How does one go about using it?
-Provide various use cases and code examples here.
-
-
+- Register with your email 
+- Login to your account
+- Set your personal data and profile picture
+- If you trained in certain day, add the training in the app
+- If you want to take a look on a certain training day, simply input the date
 
 ## Project Status
-Project is: _in progress_ / _complete_ / _no longer being worked on_. If you are no longer working on it, provide reasons why.
-
+Project is: _in progress_ 
 
 ## Contact
 Created by Mateusz Owsiak - feel free to contact me!
