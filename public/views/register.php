@@ -26,14 +26,12 @@
                 ?>
                 <b class="text">E-mail</b>
                 <input id="email" name="email" type="text" placeholder="email@email.com">
-                <b class="text">Password</b>
+                <b class="text">Hasło</b>
                 <input id="password" name="password" type="password" placeholder="*********">
-                <b class="text">Repeat password</b>
+                <b class="text">Powtórz hasło</b>
                 <input id="confirm-password" name="password2" type="password" placeholder="*********">
-<!--                <b class="text">Imię</b>-->
-<!--                <input name="name" type="text" placeholder="imie">-->
-                <button class="register-button" type="submit" id="submitBtn">Register</button>
-                <a href=" "><button class="login-button" type="button">Sign in</button></a>
+                <button class="register-button" type="submit" id="submitBtn">Zarejestruj się</button>
+                <button onclick="location.href='login';" class="login-button" type="button">Zaloguj się</button>
              </form>
         </div>
     </div>

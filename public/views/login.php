@@ -25,10 +25,10 @@
                 </div>
                 <b class="text">E-mail</b>
                 <input name="email" type="text" placeholder="email@email.com">
-                <b class="text">Password</b>
+                <b class="text">Hasło</b>
                 <input name="password" type="password" placeholder="*********">
-                <button class="login-button" type="submit">Login</button>
-                <a href="register"><button class="register-button" type="button">Sign up</button></a>
+                <button class="login-button" type="submit">Zaloguj się</button>
+                <button onclick="location.href='register';" class="register-button" type="button">Zarejestruj się</button>
              </form>
         </div>
     </div>

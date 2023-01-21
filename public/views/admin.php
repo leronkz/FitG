@@ -30,7 +30,6 @@
             </header>
             <div class="admin-panel">
                 <div class="app-stats">
-<!--                    tutaj liczba zarejestrowanych z backendu-->
                     <b class="text">Statystyki aplikacji</b>
                     <div class="register-stats">
                         <span class="inside-text">Zarejestrowanych użytkowników:</span>
