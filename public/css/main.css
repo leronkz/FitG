@@ -21,6 +21,7 @@ body{
     justify-content: flex-start;
     width:100%;
     height: 100%;
+    align-items: center;
 }
 .main-text{
     align-self: center;
@@ -235,4 +236,25 @@ header .icons span:last-child{
 }
 #to-activity{
     width:40%;
+}
+@media only screen and (max-device-width: 800px){
+    .main-text{
+        font-size:36px;
+    }
+    .open-nav>img{
+        width:50px;
+    }
+    .text{
+        font-size:16px;
+    }
+    .main-panel{
+        width: 100%;
+        height: 100%;
+    }
+    .container nav{
+        width: fit-content;
+    }
+    .nav-text{
+        font-size:16px;
+    }
 }

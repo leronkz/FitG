@@ -139,4 +139,33 @@ class UserRepository extends Repository
             return null;
         return $result;
     }
+
+    public function getAllUsers(){
+        $stmt=$this->database->connect()->prepare('
+        SELECT * FROM users WHERE email !=:email
+        ');
+        $admin = $this->getUserByID($_COOKIE['ID_user']);
+        $email = $admin->getEmail();
+        $stmt->bindParam(":email", $email,PDO::PARAM_STR);
+        $stmt->execute();
+        $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        if($users == false)
+            return null;
+        $result = [];
+        foreach ($users as $user){
+            $result[] = new User(
+                $user['email'],
+                "password"
+            );
+        }
+        return $result;
+    }
+
+    public function deleteUser($email){
+        $stmt= $this->database->connect()->prepare('
+          DELETE FROM users WHERE email=:email
+        ');
+        $stmt->bindParam(":email",$email,PDO::PARAM_STR);
+        $stmt->execute();
+    }
 }

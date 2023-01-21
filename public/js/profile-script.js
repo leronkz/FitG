@@ -55,7 +55,6 @@ function isSelected(){
     if(!sex_man.checked && !sex_woman.checked)
         return false;
 }
-//TODO DODAC WALIDACJE DANYCH
 
 form.addEventListener("submit",e=>{
     if(!checkName(name.value)){

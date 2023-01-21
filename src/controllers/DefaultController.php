@@ -61,14 +61,4 @@ class DefaultController extends AppController{
             $this->render('login',['messages'=>['Aby przejść dalej musisz się zalogować']]);
         }
     }
-    public function admin(){
-        try{
-            if(!isset($_COOKIE['ID_user'])){
-                throw new Exception("No user");
-            }
-            $this->render('admin');
-        }catch(Exception $ex){
-            $this->render('admin',['messages'=>['Aby przejść dalej musisz się zalogować']]);
-        }
-    }
 }

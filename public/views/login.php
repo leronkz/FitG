@@ -5,7 +5,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500&display=swap" rel="stylesheet">
     <title>LOGIN PAGE</title>
-<!-- HEVY - INSPIRACJA -->
+
 </head>
 <body>
     <div class="container">

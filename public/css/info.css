@@ -21,7 +21,7 @@ html {
 .nav-button{
     width:100%;
 }
-.text{
+.first-text{
     line-height: 24px;
     font-size: 20px;
     font-weight: 700;
@@ -43,20 +43,21 @@ html {
 #admin{
 /*   switch pomiedzy block a flex*/
 }
-
-@media only screen and (max-device-width: 420px){
+img{
+    height:50%;
+}
+@media only screen and (max-device-width: 800px){
    .main-text{
         font-size:36px;
    }
    .open-nav>img{
     width:50px;
    }
+   img{
+       height:30%;
+   }
    .text{
     font-size:16px;
-   }
-   .main-panel{
-    width: 100%;
-    height: 100%;
    }
    .container nav{
     width: fit-content;
@@ -64,7 +65,23 @@ html {
    .nav-text{
         font-size:16px;
    }
-   label[for="profile-picture"]>img{
-    width: 50%;
+   header .main-text{
+       font-size:30px;
+   }
+   .first-text{
+       font-size:20px;
+   }
+   .main-panel{
+       display:flex;
+   }
+   .main-panel b{
+       flex-wrap:wrap;
+       padding: 0 5%;
+   }
+   .first-text{
+       font-size: 16px;
+   }
+   .secondary-text{
+       font-size: 14px;
    }
 }

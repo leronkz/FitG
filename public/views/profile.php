@@ -18,6 +18,7 @@ MAKE RESPONSIVE -->
 <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 
 <div class="container">
+
     <nav class="nav">
         <button type="button" class="nav-close">
             <ion-icon name="close-outline" size="large"></ion-icon>

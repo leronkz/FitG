@@ -1,0 +1,75 @@
+.main-panel{
+    width: 100vw;
+    height: 100vh;
+}
+
+.admin-panel{
+    margin-top:2em;
+    width:80%;
+    height: 80%;
+    background-color: #D9D9D9;
+    border-radius: 30px;
+    display:grid;
+    grid-template-columns: 1fr 2fr;
+}
+.app-stats{
+    display:flex;
+    flex-direction: column;
+    height: 100%;
+    align-items: center;
+    border-right: 2px solid black;
+}
+.app-stats .text{
+    width:100%;
+    padding-bottom: 1em;
+    border-bottom: 2px solid black;
+    text-align: center;
+}
+.manage-users{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    align-items: center;
+    overflow:auto;
+}
+.manage-users .text{
+    width:100%;
+    padding-bottom: 1em;
+    border-bottom: 2px solid black;
+    text-align: center;
+}
+.register-stats{
+    margin-top:1em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #F9EDED;
+    border-radius: 30px;
+    width:80%;
+    height:10%;
+    justify-content: center;
+}
+.inside-text{
+    font-weight: 700;
+}
+.user{
+    margin-top:0.7em;
+    background-color: #F9EDED;
+    width: 80%;
+    height: 10%;
+    border-radius: 30px;
+    display:flex;
+    align-items: center;
+    justify-content:space-between;
+    padding:0 1em;
+}
+#delete-button{
+    background: none;
+    border:none;
+}
+#delete-button:hover{
+    cursor: pointer;
+}
+ion-icon{
+    pointer-events:none;
+}

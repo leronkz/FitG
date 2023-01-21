@@ -97,11 +97,6 @@ class ProfileController extends AppController
             $updateProfile->setIDUser($ID_user);
             $this->userRepository->updateUserData($ID_user,$updateProfile);
         }
-//        else {
-//            $userProfile = new UserProfile($fileName, $_POST['name'], $_POST['surname'], $_POST['sex'], $_POST['birthday']
-//                , $_POST['height'], $_POST['weight'], $ID_user);
-//            $this->userRepository->addUserData($userProfile);
-//        }
         return $this->profile();
     }
 
@@ -118,7 +113,7 @@ class ProfileController extends AppController
         if(!password_verify($old_password,$current_password)){
             return $this->render('settings',['messages'=>['Podałeś niepoprawne obecne hasło']]);
         }
-        $this->userRepository->updateUserPassword(5,$this->hashPassword($new_password));
+        $this->userRepository->updateUserPassword($ID_user,$this->hashPassword($new_password));
         return $this->render('settings',['messages'=>['Hasło zostało pomyślnie zmienione']]);
     }
 
@@ -147,6 +142,38 @@ class ProfileController extends AppController
         echo json_encode($this->userRepository->getUserRoleByID($_COOKIE["ID_user"]));
     }
 
+    public function getUsers(){
+        header('Content-type: application/json');
+        http_response_code(200);
+        $users = $this->userRepository->getAllUsers();
+        echo json_encode($users);
+    }
+
+    public function toDelete(){
+        $contentType = isset($_SERVER["CONTENT_TYPE"]) ? trim($_SERVER["CONTENT_TYPE"]) : '';
+
+        if($contentType==="application/json") {
+            $content = trim(file_get_contents("php://input"));
+            $decoded = json_decode($content, true);
+            $this->userRepository->deleteUser($decoded['email']);
+        }
+    }
+    public function admin(){
+        try{
+            if(!isset($_COOKIE['ID_user'])){
+                throw new Exception("No user");
+            }
+            if($this->userRepository->getUserRoleByID($_COOKIE['ID_user'])['role']!=="admin"){
+                return $this->render('main',['messages'=>['Nie posiadasz uprawnień aby przejść na te stronę']]);
+            }
+            else {
+                $users = $this->userRepository->getAllUsers();
+                return $this->render('admin', ['users' => $users]);
+            }
+        }catch(Exception $ex){
+            return $this->render('login',['messages'=>['Aby przejść dalej musisz się zalogować']]);
+        }
+    }
     private function validate(array $file) : bool
     {
         if($file['size']>self::MAX_FILE_SIZE){
