@@ -69,3 +69,37 @@ tr:nth-child(even) {
     justify-content: center;
     padding:0;
 }
+@media only screen and (max-device-width: 800px){
+    .show-activity{
+        display:flex;
+        flex-direction: column;
+    }
+    .activity{
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+    }
+    td,th{
+        font-size:10px;
+    }
+    .search-date{
+        width:100%;
+        flex-direction: column;
+    }
+    .search-form{
+        margin-bottom:0;
+        padding:0 2%;
+        flex-direction: column;
+    }
+    .search-date>input{
+        margin:0;
+        font-size:initial;
+        padding: 7% 3%;
+    }
+    img{
+        margin:0;
+    }
+    .main-text{
+        font-size:18px;
+    }
+}

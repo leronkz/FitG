@@ -231,3 +231,22 @@ tr:nth-child(even) {
 .popup-close:hover{
     background: rgba(41, 110, 180, 0.367);
 }
+@media only screen and (max-device-width: 800px){
+    .main-text{
+        font-size:12px;
+    }
+    .save-button{
+        width:60%;
+        height:6%;
+    }
+    .add-activity-panel>button{
+        font-size:14px;
+    }
+    .popup{
+        width:90%;
+    }
+    .show-activity{
+        display:flex;
+        flex-direction:column;
+    }
+}

@@ -239,7 +239,7 @@ header .icons span:last-child{
 }
 @media only screen and (max-device-width: 800px){
     .main-text{
-        font-size:36px;
+        font-size:16px;
     }
     .open-nav>img{
         width:50px;
@@ -252,9 +252,31 @@ header .icons span:last-child{
         height: 100%;
     }
     .container nav{
-        width: fit-content;
+        width: 280px;
+        height:100vh;
+    }
+    .nav .nav-link{
+        padding:9px 25px;
     }
     .nav-text{
         font-size:16px;
+    }
+    img{
+        margin:0;
+    }
+    header .current-date{
+        font-size:15px;
+    }
+    .calendar .weeks li{
+        font-size:10px;
+    }
+    .calendar .days li{
+        font-size:10px;
+    }
+    header .icons span{
+        font-size:40px;
+    }
+    .wrapper{
+        width:initial;
     }
 }
