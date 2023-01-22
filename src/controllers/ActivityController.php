@@ -3,7 +3,6 @@
 require_once 'AppController.php';
 require_once __DIR__ . '/../models/Exercise.php';
 require_once __DIR__ . '/../models/Activity.php';
-require_once __DIR__ . '/../models/ActivityInfo.php';
 require_once __DIR__.'/../repository/ActivityRepository.php';
 
 class ActivityController extends AppController
@@ -24,32 +23,27 @@ class ActivityController extends AppController
             echo json_encode($this->activityRepository->getActivity($_COOKIE['ID_user'],$decoded['date']));
         }
     }
-//   activity.php do przesylania treningu
     public function sendData(){
         $contentType = isset($_SERVER["CONTENT_TYPE"]) ? trim($_SERVER["CONTENT_TYPE"]) : '';
 
         if($contentType==="application/json"){
             $content = trim(file_get_contents("php://input"));
             $decoded = json_decode($content,true);
-//            var_dump($decoded);
-//            $this->createTraining($decoded);
-//            $url = "http://$_SERVER[HTTP_HOST]";
-//            header("Location: {$url}/main");
+            $this->createTraining($decoded);
         }
     }
 
-    public function createTraining($decoded){
+    public function createTraining(array $decoded){
 
         $activity = new Activity($_COOKIE['ID_user'],$decoded["date"]);
         $this->activityRepository->addActivity($activity);
-        $activity = $this->activityRepository->getActivity($_COOKIE['ID_user'],$decoded["date"]);
-        $number_of_exercises = count($decoded);
+        $activity = $this->activityRepository->getActivityByDate($_COOKIE['ID_user'],$decoded["date"]);
         $exercises = [];
+        $number_of_exercises = count($decoded)-1;
         for($i=0; $i<$number_of_exercises; $i++){
-            $n = "exercise".$i;
-            $number_of_series = count(($decoded[$n])-1)/3;
+            $n = 'exercise'.$i;
+            $number_of_series = (count($decoded[$n])-1)/3;
             $s_weight2=$s_reps2=$s_weight3=$s_reps3=$s_weight4=$s_reps4=$s_weight5=$s_reps5=$s_weight6=$s_reps6 = null;
-
             $s_weight1 = floatval($decoded[$n][2]);
             $s_reps1 = intval($decoded[$n][3]);
 
