@@ -14,16 +14,17 @@ class ActivityController extends AppController
         parent::__construct();
         $this->activityRepository = new ActivityRepository();
     }
-
-    public function show(){
-
-        if(!$this->isPost()){
-            return $this->render('diary');
+    public function showTraining(){
+        $contentType = isset($_SERVER["CONTENT_TYPE"]) ? trim($_SERVER["CONTENT_TYPE"]) : '';
+        if($contentType==="application/json") {
+            $content = trim(file_get_contents("php://input"));
+            $decoded = json_decode($content, true);
+            header('Content-type: application/json');
+            http_response_code(200);
+            echo json_encode($this->activityRepository->getActivity($_COOKIE['ID_user'],$decoded['date']));
         }
-        $date = $_POST['activity-date'];
-
     }
-
+//   activity.php do przesylania treningu
     public function sendData(){
         $contentType = isset($_SERVER["CONTENT_TYPE"]) ? trim($_SERVER["CONTENT_TYPE"]) : '';
 
