@@ -36,11 +36,9 @@ class ProfileController extends AppController
         if(!$this->isPost()){
             return $this->render('register');
         }
-
         if($this->isEmailUsed($_POST['email'])){
             return $this->render('register',['messages'=>["Podany adres email jest juz zajęty"]]);
         }
-
         $hashed_password = $this->hashPassword($_POST['password']);
         $user = new User($_POST['email'],$hashed_password);
         $this->userRepository->addUser($user);
@@ -93,7 +91,6 @@ class ProfileController extends AppController
                 $updateProfile->setWeight($updateProfile->getWeight());
             else
                 $updateProfile->setWeight($_POST['weight']);
-
             $updateProfile->setIDUser($ID_user);
             $this->userRepository->updateUserData($ID_user,$updateProfile);
         }
@@ -106,7 +103,6 @@ class ProfileController extends AppController
             return $this->render("settings");
         }
         $user = $this->userRepository->getUserByID($ID_user);
-
         $current_password = $user->getPassword();
         $old_password = $_POST['current-password'];
         $new_password = $_POST['new-password'];
@@ -151,10 +147,15 @@ class ProfileController extends AppController
 
     public function toDelete(){
         $contentType = isset($_SERVER["CONTENT_TYPE"]) ? trim($_SERVER["CONTENT_TYPE"]) : '';
-
         if($contentType==="application/json") {
             $content = trim(file_get_contents("php://input"));
             $decoded = json_decode($content, true);
+            $user = $this->userRepository->getUserByEmail($decoded['email']);
+            $userProfile = $this->userRepository->getUserData($user->getIDUser());
+            if($userProfile->getImage() !== "profile_picture.svg") {
+                $file_to_delete = dirname(__DIR__) . self::UPLOAD_DIRECTORY . $userProfile->getImage();
+                unlink($file_to_delete);
+            }
             $this->userRepository->deleteUser($decoded['email']);
         }
     }
