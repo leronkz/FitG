@@ -2,6 +2,7 @@
 
 <head>
     <meta charset="utf-8">
+    <link rel="icon" type="image/png" href="public/img/favicon.png">
     <link rel="stylesheet" type="text/css" href="public/css/main.css">
     <link rel="stylesheet" type="text/css" href="public/css/info.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">

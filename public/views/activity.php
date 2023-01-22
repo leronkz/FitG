@@ -35,7 +35,6 @@
                 <ion-icon name="close-outline" size="large"></ion-icon>
             </button>
             <b class="text">Dodawanie ćwiczenia</b>
-            <!-- action w formie przesyla dane po kliknieciu!! -->
             <form action="" autocomplete="off" class="add-form">
                 <!-- <div id="autocomplete-wrapper" class="autocomplete-wrapper"> -->
                     <input id="autocomplete-input" type="text" placeholder="Nazwa ćwiczenia">

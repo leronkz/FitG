@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 
 <head>
-
     <meta charset="utf-8">
+    <link rel="icon" type="image/png" href="public/img/favicon.png">
     <link rel="stylesheet" type="text/css" href="public/css/style.css">
     <link rel="stylesheet" type="text/css" href="public/css/main.css">
     <link rel="stylesheet" type="text/css" href="public/css/diary.css">
@@ -14,7 +14,6 @@
     <script src="public/js/nav-script.js" defer></script>
     <script src="public/js/show-activity.js" defer></script>
     <title>ACTIVITY DIARY</title>
-
 </head>
 
 <body>

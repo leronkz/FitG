@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 
 <head>
+    <link rel="icon" type="image/png" href="public/img/favicon.png">
     <link rel="stylesheet" type="text/css" href="public/css/profile_style.css">
     <script src="https://kit.fontawesome.com/7fd64f3cef.js" crossorigin="anonymous"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -11,8 +12,6 @@
     <script src="public/js/profile-script.js" defer></script>
     <title>PROFILE PAGE</title>
 </head>
-<!-- TODO:
-MAKE RESPONSIVE -->
 <body>
 <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
 <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>

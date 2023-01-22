@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <head>
+    <link rel="icon" type="image/png" href="public/img/favicon.png">
     <link rel="stylesheet" type="text/css" href="public/css/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

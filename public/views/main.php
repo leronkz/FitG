@@ -2,6 +2,7 @@
 
 <head>
     <meta charset="utf-8">
+    <link rel="icon" type="image/png" href="public/img/favicon.png">
     <link rel="stylesheet" type="text/css" href="public/css/style.css">
     <link rel="stylesheet" type="text/css" href="public/css/main.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,8 +12,6 @@
     <title>MAIN PAGE</title>
 </head>
 
-<!-- TODO:
-MAKE RESPONSIVE -->
 <body>
 
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <head>
+    <link rel="icon" type="image/png" href="public/img/favicon.png">
     <link rel="stylesheet" type="text/css" href="public/css/style.css">
     <link rel="stylesheet" type="text/css" href="public/css/register.css">
     <script type="text/javascript" src="public/js/register-script.js" defer></script>
@@ -7,8 +8,6 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500&display=swap" rel="stylesheet">
     <title>REGISTER PAGE</title>
-
-
 </head>
 <body>
     <div class="container">
