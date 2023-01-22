@@ -46,14 +46,15 @@
                         }
                         ?>
                     </div>
-                    <?php foreach($users as $user): ?>
+                    <?php if(isset($users)){
+                        foreach($users as $user): ?>
                     <div class="user">
                         <b id="email"><?= $user->getEmail(); ?></b>
                         <button id="delete-button" type="button" title="Usuń użytkownika">
                             <ion-icon name="trash-outline" size="large" title="Usuń użytkownika"></ion-icon>
                         </button>
                     </div>
-                    <?php endforeach; ?>
+                    <?php endforeach; }?>
                 </div>
             </div>
         </div>
