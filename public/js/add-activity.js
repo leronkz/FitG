@@ -19,61 +19,6 @@ const closeBtn = document.querySelector("#popup-close");
 
 const saveTrainingBtn = document.querySelector(".save-button");
 
-// async function getExerciseData(){
-// 	const exerciseRes = await fetch('https://exercisedb.p.rapidapi.com/exercises', options);
-// 	const data = await exerciseRes.json();
-// 	exerciseNames = data.map((exercise)=>{
-// 		const n = exercise.name;
-// 		const str = n.charAt(0).toUpperCase()+n.slice(1);
-// 		return str;
-// 	});
-// }
-
-// getExerciseData();
-
-// function onInputChange(){
-// 	removeAutocompleteDropdown();
-// 	const value = inputEl.value.toLowerCase();
-
-// 	if(value.length===0) return;
-// 	const filteredNames = [];
-// 	exerciseNames.forEach((exerciseName) =>{
-// 		if(exerciseName.substr(0, value.length).toLowerCase() === value)
-// 			filteredNames.push(exerciseName);
-// 	})
-// 	createAutocompleteDropdown(filteredNames);
-// }
-// inputEl.addEventListener("input", onInputChange);
-
-// function createAutocompleteDropdown(list){
-
-// 	const listEl = document.createElement("ul");
-// 	listEl.className = "autocomplete-list";
-// 	listEl.id = "autocomplete-list";
-// 	list.forEach((exercise)=>{
-// 		const listItem = document.createElement("li");
-// 		const exerciseButton = document.createElement("button");
-// 		exerciseButton.innerHTML = exercise;
-// 		exerciseButton.addEventListener("click",onExerciseButtonClick);
-// 		listItem.appendChild(exerciseButton);
-// 		listEl.appendChild(listItem);
-// 	})
-// 	document.querySelector("#autocomplete-wrapper").appendChild(listEl);
-// }
-
-// function removeAutocompleteDropdown(){
-// 	const listEl = document.querySelector("#autocomplete-list");
-// 	if(listEl)
-// 		listEl.remove();
-// }
-
-// function onExerciseButtonClick(e){
-// 	e.preventDefault();
-// 	const buttonEl = e.target;
-// 	inputEl.value = buttonEl.innerHTML;
-// 	removeAutocompleteDropdown();
-// }
-
 addElementBtn.addEventListener("click",onAddExerciseButtonClick);
 function onAddExerciseButtonClick(){
 	addElementBtn.style.setProperty("visibility","hidden");
