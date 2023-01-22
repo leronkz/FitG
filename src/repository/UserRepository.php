@@ -14,7 +14,6 @@ class UserRepository extends Repository
         $stmt->bindParam(':email',$email,PDO::PARAM_STR);
         $stmt->execute();
         $user = $stmt->fetch(PDO::FETCH_ASSOC);
-
         if($user==false){
             return null;
         }
@@ -163,7 +162,7 @@ class UserRepository extends Repository
 
     public function deleteUser($email){
         $stmt= $this->database->connect()->prepare('
-          DELETE FROM users WHERE email=:email
+        DELETE FROM users WHERE email=:email
         ');
         $stmt->bindParam(":email",$email,PDO::PARAM_STR);
         $stmt->execute();
