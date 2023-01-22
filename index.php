@@ -24,11 +24,13 @@ Routing::get('getUsers','ProfileController');
 
 Routing::post('login','SecurityController');
 Routing::post('setUserData','ProfileController');
-Routing::post('show','ActivityController');
+Routing::post('showTraining','ActivityController');
 Routing::post('createUser','ProfileController');
 Routing::post('updatePassword','ProfileController');
 Routing::post('sendData','ActivityController');
 Routing::post('toDelete','ProfileController');
+Routing::post('getDate','ActivityController');
+
 
 Routing::run($path);
 ?>
