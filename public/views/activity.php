@@ -36,9 +36,7 @@
             </button>
             <b class="text">Dodawanie ćwiczenia</b>
             <form action="" autocomplete="off" class="add-form">
-                <!-- <div id="autocomplete-wrapper" class="autocomplete-wrapper"> -->
-                    <input id="autocomplete-input" type="text" placeholder="Nazwa ćwiczenia">
-                <!-- </div> -->
+                <input id="autocomplete-input" type="text" placeholder="Nazwa ćwiczenia">
                 <b class="text">Ilość serii</b>
                 <select name="series" id="series">
                     <option value="1">1</option>
