@@ -31,8 +31,12 @@ FitG is an application made for people who want to keep up with their training a
 
 
 ## Screenshots
-![Example screenshot](./img/screenshot.png)
-<!-- If you have screenshots you'd like to share, include them here. -->
+![Example screenshot](public/img/screenshots/login.PNG)
+![Example screenshot](public/img/screenshots/kalendarz.PNG)
+![Example screenshot](public/img/screenshots/profil.PNG)
+![Example screenshot](public/img/screenshots/aktywnosc.PNG)
+![Example screenshot](public/img/screenshots/dziennik.PNG)
+![Example screenshot](public/img/screenshots/admin.PNG)
 
 ## Usage
 - Register with your email 
