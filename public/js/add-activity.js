@@ -218,20 +218,17 @@ function sendData(){
 		for (let j = 0; j < tds.length; j++) {
 			ex.push(tds[j].innerText);
 		}
-		// console.log("exercise"+i);
-		tag = "exercise" + i.toString();
-		data[tag] = "aha";
+		tag = "exercise"+i;
+		data[tag] = ex;
 		ex = [];
 	}
-	console.log(data);
+	showActivity.innerHTML = "";
 	fetch("/sendData",{
 		method: "POST",
 		headers:{
 			'Content-Type': 'application/json'
 		},
 		body: JSON.stringify(data)
-	}).then(function(response){
-		return response.json();
 	});
 }
 
