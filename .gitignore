@@ -1,7 +1,4 @@
+.idea
 public/uploads/
 public/img/screenshots
-.idea
-.vscode
 .env
-src/models/ActivityInfo.php
-src/models/ExerciseInfo.php
