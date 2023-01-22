@@ -111,22 +111,6 @@ create table if not exists exercises
 alter table exercises
     owner to dbuser;
 
-create table if not exists activity_info
-(
-    "ID_activity_info" serial
-        primary key,
-    "ID_activity"      integer not null
-        constraint activity_info_activities_id_activity_fk
-            references activities
-            on update cascade on delete cascade,
-    "ID_exercise"      integer not null
-        constraint activity_info_exercises_id_exercise_fk
-            references exercises
-            on update cascade on delete cascade
-);
-
-alter table activity_info
-    owner to dbuser;
 
 create or replace function uuid_nil() returns uuid
     immutable
